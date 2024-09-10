@@ -6,6 +6,5 @@
 #include "dataTypes.h"
 
 void getSuggestionsMenu(const Constraints& constraints);
-void variousFilterMenu(const Constraints& constraints);
 
 #endif // INPUT_H

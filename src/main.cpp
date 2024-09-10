@@ -21,7 +21,7 @@ int main() {
         cout << "1. Insert new data into investments\n";
         cout << "2. Get investment suggestions\n";
         cout << "3. Check all available investments\n";
-        cout << "4. Exit\n";
+        cout << "4. EXIT\n";
         cout << "Enter your choice (1-4): ";
         cin >> choice;
 
