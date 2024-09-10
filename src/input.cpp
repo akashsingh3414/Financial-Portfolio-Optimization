@@ -14,8 +14,8 @@ void getSuggestionsMenu() {
         cout << "1. Single Period High Return to Cost Ratio" << endl;
         cout << "2. Multi Period Optimization" << endl;
         cout << "3. Various Filters" << endl;
-        cout << "4. Go Back to MAIN MENU" << endl;
-        cout << "5. Plot Graphs" << endl;
+        cout << "4. Plot Graphs" << endl;
+        cout << "5. Go Back to MAIN MENU" << endl;
         cout << "Enter your choice (1-4): ";
         cin >> choice;
 

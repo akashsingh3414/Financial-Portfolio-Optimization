@@ -1,23 +1,29 @@
 #include <iostream>
 #include <fstream>
-#include <sstream>
+#include <string>
+#include <vector>
 #include "../include/utils.h"
+#include "../include/dataTypes.h"
 
 using namespace std;
 
 void insertDataIntoCSV(const string& filename) {
-    ofstream file;
-    file.open(filename, ios::app);
+    ofstream file(filename, ios::app);
 
     if (!file.is_open()) {
         cerr << "Error opening file: " << filename << endl;
         return;
     }
 
+    file.seekp(0, ios::end);
+    if (file.tellp() > 0) {
+        file << '\n';
+    }
+
     string name, type;
     double cost, expectedReturn, risk;
 
-    cin.ignore();  
+    cin.ignore();
 
     cout << "Enter investment name: ";
     getline(cin, name);
@@ -36,7 +42,7 @@ void insertDataIntoCSV(const string& filename) {
     cout << "Enter investment type: ";
     getline(cin, type);
 
-    file << name << "," << cost << "," << expectedReturn << "," << risk << "," << type << endl;
+    file << name << "," << cost << "," << expectedReturn << "," << risk << "," << type;
 
     cout << "Investment data added successfully!" << endl;
 
@@ -54,24 +60,32 @@ vector<Investment> readInvestmentData(const string& filename) {
     }
 
     while (getline(file, line)) {
-        istringstream iss(line);
-        string name, type;
-        double cost, expectedReturn, risk;
+        size_t pos = 0;
+        string token;
+        vector<string> tokens;
 
-        if (getline(iss, name, ',') &&
-            (iss >> cost) &&
-            (iss.ignore(), iss >> expectedReturn) &&
-            (iss.ignore(), iss >> risk) &&
-            (iss.ignore(), getline(iss, type))) {
-            
-            if (iss.fail()) {
-                cerr << "Error parsing line: " << line << endl;
-                continue;
-            }
-            
-            investments.emplace_back(name, cost, expectedReturn, risk, type);
-        } else {
+        while ((pos = line.find(',')) != string::npos) {
+            token = line.substr(0, pos);
+            tokens.push_back(token);
+            line.erase(0, pos + 1);
+        }
+        tokens.push_back(line);
+
+        if (tokens.size() != 5) {
             cerr << "Error parsing line: " << line << endl;
+            continue;
+        }
+
+        try {
+            string name = tokens[0];
+            double cost = stod(tokens[1]);
+            double expectedReturn = stod(tokens[2]);
+            double risk = stod(tokens[3]);
+            string type = tokens[4];
+
+            investments.emplace_back(name, cost, expectedReturn, risk, type);
+        } catch (const invalid_argument& e) {
+            cerr << "Error parsing line: " << e.what() << endl;
         }
     }
 
@@ -87,7 +101,7 @@ void displayAllInvestments(const string& filename) {
         return;
     }
 
-    cout << "\n===== All Investments =====\n";
+    cout << "\n\n===== All Investments =====\n\n";
     for (const auto& investment : investments) {
         investment.display();
     }
