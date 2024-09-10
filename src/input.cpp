@@ -15,6 +15,7 @@ void getSuggestionsMenu() {
         cout << "2. Multi Period Optimization" << endl;
         cout << "3. Various Filters" << endl;
         cout << "4. Go Back to MAIN MENU" << endl;
+        cout << "5. Plot Graphs" << endl;
         cout << "Enter your choice (1-4): ";
         cin >> choice;
 
@@ -37,6 +38,10 @@ void getSuggestionsMenu() {
                 cout << "Various Filters are not yet implemented.\n";
                 break;
             case 4:
+                cout << "Plotting Graph.\n";
+                cout << "Feature Coming Soon.\n";
+                break;
+            case 5:
                 cout << "Exiting the suggestions menu.\n";
                 break;
             default:
@@ -46,5 +51,5 @@ void getSuggestionsMenu() {
 
         cout << endl;
 
-    } while (choice != 4);
+    } while (choice != 5);
 }
