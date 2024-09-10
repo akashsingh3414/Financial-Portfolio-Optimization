@@ -12,4 +12,53 @@ Apple Inc.,150.00,0.12,0.25,Stock
 Microsoft Corp.,250.00,0.10,0.20,Stock
 BondA,100.00,0.05,0.10,Bond
 MutualFundB,200.00,0.08,0.15,Mutual Fund
-ABC,100,10,0.01,ABC
+TechFund A,100,10,0.15,Technology
+HealthCorp B,150,12,0.10,Healthcare
+GreenEnergy C,200,18,0.25,Energy
+FinGrowth D,120,9,0.12,Finance
+RetailX E,80,7,0.20,Retail
+RealEstate F,250,15,0.30,Real Estate
+Pharma G,180,14,0.18,Healthcare
+ConsumerGoods H,110,8,0.22,Consumer Goods
+AutoInnovators I,140,11,0.17,Automobile
+GlobalTech J,210,20,0.28,Technology
+EcoTransport K,95,9,0.13,Transportation
+AgriInvest L,130,10,0.16,Agriculture
+EduFutures M,160,11,0.19,Education
+SmartCity N,190,16,0.21,Infrastructure
+CleanWater O,100,12,0.14,Utilities
+GreenTransport P,160,13,0.18,Transportation
+BioTech Q,220,19,0.22,Biotechnology
+LuxuryRealEstate R,300,27,0.30,Real Estate
+RenewableEnergy S,180,16,0.20,Energy
+CyberSecurity T,200,21,0.17,Technology
+HealthcareInnovation U,250,23,0.14,Healthcare
+CleanEnergy V,210,20,0.19,Energy
+AIStartups W,190,25,0.28,Technology
+SpaceExploration X,270,30,0.35,Aerospace
+SustainableAgriculture Y,140,15,0.11,Agriculture
+BlockchainInvest Z,180,28,0.32,Technology
+PharmaInnovation AA,230,22,0.15,Healthcare
+BlueChipStock BB,240,17,0.08,Stock
+GovtBond CC,100,5,0.02,Bond
+IndexFund DD,160,10,0.07,Mutual Fund
+TechETF EE,190,14,0.12,ETF
+PreciousMetals FF,210,18,0.25,Commodity
+LuxuryGoods GG,170,20,0.30,Consumer Goods
+DigitalCurrency HH,110,40,0.50,Cryptocurrency
+REIT II,200,12,0.18,Real Estate
+AutoTech JJ,150,13,0.16,Automobile
+GreenTech KK,180,22,0.20,Technology
+E-CommerceFund LL,230,25,0.24,Retail
+HighYieldBond MM,130,8,0.09,Bond
+GlobalInfrastructure NN,250,28,0.21,Infrastructure
+TechInnovationFund OO,300,35,0.27,Technology
+StartupVenture PP,100,45,0.40,Private Equity
+CleanTech QQ,160,18,0.13,Energy
+TelecomFund RR,140,15,0.10,Telecommunication
+FoodTech SS,190,20,0.15,Consumer Goods
+AlternativeEnergy TT,210,30,0.29,Energy
+GlobalREIT UU,250,16,0.22,Real Estate
+WaterResources VV,120,14,0.12,Utilities
+NanoTech WW,180,24,0.19,Technology
+HealthFund XX,200,17,0.08,Healthcare

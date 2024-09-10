@@ -106,3 +106,15 @@ void displayAllInvestments(const string& filename) {
         investment.display();
     }
 }
+
+void displaySelectedInvestments(const vector<Investment>& selectedInvestments) {
+    cout << "\n\nSelected Investments for Maximum Return to Cost Ratio:\n\n";
+    if (!selectedInvestments.empty()) {
+        for (const auto& investment : selectedInvestments) {
+            investment.display();
+        }
+    } else {
+        cout << "No suitable investments found within the budget." << endl;
+    }
+    cout<<endl;
+}

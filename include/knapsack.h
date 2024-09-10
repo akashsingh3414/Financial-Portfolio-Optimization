@@ -9,9 +9,7 @@ public:
     Knapsack();
     ~Knapsack();
     
-    std::vector<Investment> optimize(const std::vector<Investment>& investments, double budget, int riskTolerance);
-
-    void displaySelectedInvestments(const std::vector<Investment>& selectedInvestments);
+    std::vector<Investment> optimizeByKnapsack(const std::vector<Investment>& investments, double budget, int riskTolerance);
 };
 
 #endif // KNAPSACK_H

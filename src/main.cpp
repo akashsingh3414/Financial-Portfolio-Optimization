@@ -4,6 +4,11 @@
 
 using namespace std;
 
+Constraints inputMenu() {
+    Constraints constraints = getUserConstraints();
+    return constraints;
+}
+
 int main() {
     int choice;
     string filename = "../data/investments.csv";
@@ -24,8 +29,9 @@ int main() {
             case 1:
                 insertDataIntoCSV(filename);
                 break;
-            case 2:
-                getSuggestionsMenu();
+            case 2:{
+                Constraints inputConstraints = inputMenu();
+                getSuggestionsMenu(inputConstraints);}
                 break;
             case 3:
                 displayAllInvestments(filename);

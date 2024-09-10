@@ -28,7 +28,7 @@ string Investment::getType() const {
 
 void Investment::display() const {
     cout << "Name: " << name << ", Cost: " << cost << ", Expected Return: " << expectedReturn 
-              << ", Risk: " << risk << ", Type: " << type << endl;
+    << ", Risk: " << risk << ", Type: " << type << endl;
 }
 
 Constraints::Constraints(double budget, int periods, int riskTolerance)
