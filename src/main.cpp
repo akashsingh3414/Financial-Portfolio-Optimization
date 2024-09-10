@@ -1,26 +1,43 @@
-#include "../include/input.h"
-#include "../include/knapsack.h"
 #include <iostream>
-#include <vector>
+#include "../include/utils.h"
+#include "../include/input.h"
 
 using namespace std;
 
 int main() {
-    Constraints constraints = getUserConstraints();
-    constraints.display();
+    int choice;
+    string filename = "../data/investments.csv";
 
-    std::string filename = "../data/investments.csv";
-    std::vector<Investment> investments = readInvestmentData(filename);
+    do {
+        cout << "-----------------------------------\n";
+        cout << "  Welcome to Financial Portfolio Optimization\n";
+        cout << "-----------------------------------\n";
+        cout << "Please choose an option:\n";
+        cout << "1. Insert new data into investments\n";
+        cout << "2. Get investment suggestions\n";
+        cout << "3. Check all available investments\n";
+        cout << "4. Exit\n";
+        cout << "Enter your choice (1-4): ";
+        cin >> choice;
 
-    std::cout << "\nInvestments:\n\n";
-    for (const auto& investment : investments) {
-        investment.display();
-    }
-
-    Knapsack knapsack;
-    std::vector<Investment> optimizedInvestments = knapsack.optimize(investments, constraints.getBudget(), constraints.getRiskTolerance());
-
-    knapsack.displaySelectedInvestments(optimizedInvestments);
+        switch (choice) {
+            case 1:
+                insertDataIntoCSV(filename);
+                break;
+            case 2:
+                getSuggestionsMenu();
+                break;
+            case 3:
+                displayAllInvestments(filename);
+                break;
+            case 4:
+                cout << "Exiting the program. Goodbye!\n";
+                break;
+            default:
+                cout << "Invalid choice. Please enter a number between 1 and 4.\n";
+        }
+        cout << endl;
+    } while (choice != 4);
 
     return 0;
 }

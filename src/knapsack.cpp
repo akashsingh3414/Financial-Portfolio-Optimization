@@ -1,5 +1,5 @@
 #include "../include/knapsack.h"
-#include "../include/input.h"
+#include "../include/dataTypes.h"
 #include <iostream>
 #include <vector>
 #include <algorithm>

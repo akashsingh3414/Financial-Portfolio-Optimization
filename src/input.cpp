@@ -1,103 +1,50 @@
-#include "../include/input.h"
-#include <fstream>
-#include <sstream>
 #include <iostream>
 #include <vector>
-#include <string>
+#include "../include/input.h"
+#include "../include/dataTypes.h"
+#include "../include/knapsack.h"
+#include "../include/utils.h"
 
 using namespace std;
 
-Investment::Investment(const string& name, double cost, double expectedReturn, double risk, const string& type)
-    : name(name), cost(cost), expectedReturn(expectedReturn), risk(risk), type(type) {}
+void getSuggestionsMenu() {
+    int choice;
+    do {
+        cout << "===== Investment Suggestions Menu =====" << endl;
+        cout << "1. Single Period High Return to Cost Ratio" << endl;
+        cout << "2. Multi Period Optimization" << endl;
+        cout << "3. Various Filters" << endl;
+        cout << "4. Go Back to MAIN MENU" << endl;
+        cout << "Enter your choice (1-4): ";
+        cin >> choice;
 
-double Investment::getCost() const {
-    return cost;
-}
+        switch (choice) {
+            case 1: {
+                Constraints constraints = getUserConstraints();
 
-double Investment::getExpectedReturn() const {
-    return expectedReturn;
-}
+                string filename = "../data/investments.csv";
+                vector<Investment> investments = readInvestmentData(filename);
 
-double Investment::getRisk() const {
-    return risk;
-}
-
-string Investment::getType() const {
-    return type;
-}
-
-void Investment::display() const {
-    cout << "Name: " << name << ", Cost: " << cost << ", Expected Return: " << expectedReturn 
-              << ", Risk: " << risk << ", Type: " << type << endl;
-}
-
-Constraints::Constraints(double budget, int periods, int riskTolerance)
-    : budget(budget), periods(periods), riskTolerance(riskTolerance) {}
-
-double Constraints::getBudget() const {
-    return budget;
-}
-
-int Constraints::getPeriods() const {
-    return periods;
-}
-
-int Constraints::getRiskTolerance() const {
-    return riskTolerance;
-}
-
-void Constraints::display() const {
-    cout << "Budget: " << budget << ", Periods: " << periods
-              << ", Risk Tolerance: " << riskTolerance << endl;
-}
-
-Constraints getUserConstraints() {
-    double budget;
-    int periods;
-    int riskTolerance;
-
-    cout << "Enter total budget for investment: ";
-    cin >> budget;
-    cout << "Enter number of periods for optimization: ";
-    cin >> periods;
-    cout << "Enter risk tolerance (1 = Low, 2 = Medium, 3 = High): ";
-    cin >> riskTolerance;
-
-    return Constraints(budget, periods, riskTolerance);
-}
-
-vector<Investment> readInvestmentData(const string& filename) {
-    vector<Investment> investments;
-    ifstream file(filename);
-    string line;
-
-    if (!file.is_open()) {
-        cerr << "Error opening file: " << filename << endl;
-        return investments;
-    }
-
-    while (getline(file, line)) {
-        istringstream iss(line);
-        string name, type;
-        double cost, expectedReturn, risk;
-
-        string costStr, returnStr, riskStr;
-
-        if (getline(iss, name, ',') &&
-            getline(iss, costStr, ',') &&
-            getline(iss, returnStr, ',') &&
-            getline(iss, riskStr, ',') &&
-            getline(iss, type)) {
-            
-            cost = stod(costStr);
-            expectedReturn = stod(returnStr);
-            risk = stod(riskStr);
-
-            investments.emplace_back(name, cost, expectedReturn, risk, type);
+                Knapsack knapsack;
+                vector<Investment> optimizedInvestments = knapsack.optimize(investments, constraints.getBudget(), constraints.getRiskTolerance());
+                knapsack.displaySelectedInvestments(optimizedInvestments);
+                break;
+            }
+            case 2:
+                cout << "Multi Period Optimization is not yet implemented.\n";
+                break;
+            case 3:
+                cout << "Various Filters are not yet implemented.\n";
+                break;
+            case 4:
+                cout << "Exiting the suggestions menu.\n";
+                break;
+            default:
+                cout << "Invalid choice. Please enter a number between 1 and 4.\n";
+                break;
         }
-    }
 
-    file.close();
-    return investments;
+        cout << endl;
+
+    } while (choice != 4);
 }
-
