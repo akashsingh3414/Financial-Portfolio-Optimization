@@ -1,7 +1,7 @@
 #ifndef KNAPSACK_H
 #define KNAPSACK_H
 
-#include "input.h"
+#include "dataTypes.h"
 #include <vector>
 
 class Knapsack {
