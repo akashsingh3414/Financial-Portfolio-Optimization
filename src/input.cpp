@@ -5,6 +5,8 @@
 #include "../include/greedy_knapsack_filterwise.h"
 #include "../include/knapsack.h"
 #include "../include/utils.h"
+#include "../include/output.h"
+#include "../include/dp.h"
 
 using namespace std;
 
@@ -16,7 +18,7 @@ void variousFilterMenu(const Constraints& constraints) {
     vector<Investment> optimizedInvestments;
 
     do {
-        cout << "===== Select One Filter =====" << endl;
+        cout << "\n===== Select One Filter =====" << endl;
         cout << "1. High Return" << endl;
         cout << "2. Low Cost" << endl;
         cout << "3. Low Risk" << endl;
@@ -68,7 +70,7 @@ void getSuggestionsMenu(const Constraints& constraints) {
         cout << "1. Single Period High Return to Cost Ratio" << endl;
         cout << "2. Multi Period Optimization" << endl;
         cout << "3. Various Filters" << endl;
-        cout << "4. Plot Graphs" << endl;
+        cout << "4. Plot Return to Cost Ratio Graph" << endl;
         cout << "5. Go Back to MAIN MENU" << endl;
         cout << "Enter your choice (1-5): ";
         cin >> choice;
@@ -78,19 +80,22 @@ void getSuggestionsMenu(const Constraints& constraints) {
                 {
                     Knapsack knapsack;
                     vector<Investment> optimizedInvestments = knapsack.optimizeByKnapsack(investments, constraints.getBudget(), constraints.getRiskTolerance());
-                    cout << "Showing Results for Single Period High Return to Cost Ratio\n";
+                    cout << "\nShowing Results for Single Period High Return to Cost Ratio\n";
                     displaySelectedInvestments(optimizedInvestments);
                 }
                 break;
             case 2:
-                cout << "Multi Period Optimization is not yet implemented.\n";
+                {
+                    dynamicProgramming dynamicProgramming;
+                    vector<Investment> optimizedInvestments = dynamicProgramming.maximizeReturns(investments, constraints); //modify this to return vector<Investment>
+                    displaySelectedInvestments(optimizedInvestments);
+                }
                 break;
             case 3:
                 variousFilterMenu(constraints);
                 break;
             case 4:
-                cout << "Plotting Graph.\n";
-                cout << "Feature Coming Soon.\n";
+                plotInvestmentsVsReturn(constraints);
                 break;
             case 5:
                 cout << "Exiting the suggestions menu.\n";
@@ -99,7 +104,6 @@ void getSuggestionsMenu(const Constraints& constraints) {
                 cout << "Invalid choice. Please enter a number between 1 and 5.\n";
                 break;
         }
-
         cout << endl;
     } while (choice != 5);
 }

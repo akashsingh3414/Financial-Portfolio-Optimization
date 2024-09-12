@@ -5,22 +5,24 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
 class Investment {
 public:
-    Investment(const std::string& name, double cost, double expectedReturn, double risk, const std::string& type);
+    Investment(const string& name, double cost, double expectedReturn, double risk, const string& type);
     
     double getCost() const;
     double getExpectedReturn() const;
     double getRisk() const;
-    std::string getType() const;
+    string getType() const;
     void display() const;
 
 private:
-    std::string name;
+    string name;
     double cost;
     double expectedReturn;
     double risk;
-    std::string type;
+    string type;
 };
 
 class Constraints {
