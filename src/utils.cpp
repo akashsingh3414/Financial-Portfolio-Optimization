@@ -11,7 +11,7 @@ void insertDataIntoCSV(const string& filename) {
     ofstream file(filename, ios::app);
 
     if (!file.is_open()) {
-        cerr << "Error opening file: " << filename << endl;
+        cerr << "\t\t\t\t\tError opening file: " << filename << endl;
         return;
     }
 
@@ -25,26 +25,26 @@ void insertDataIntoCSV(const string& filename) {
 
     cin.ignore();
 
-    cout << "Enter investment name: ";
+    cout << "\t\t\t\t\tEnter investment name: ";
     getline(cin, name);
 
-    cout << "Enter investment cost: ";
+    cout << "\t\t\t\t\tEnter investment cost: ";
     cin >> cost;
 
-    cout << "Enter expected return: ";
+    cout << "\t\t\t\t\tEnter expected return: ";
     cin >> expectedReturn;
 
-    cout << "Enter risk (as a decimal, e.g., 0.05 for 5%): ";
+    cout << "\t\t\t\t\tEnter risk (as a decimal, e.g., 0.05 for 5%): ";
     cin >> risk;
 
     cin.ignore();
 
-    cout << "Enter investment type: ";
+    cout << "\t\t\t\t\tEnter investment type: ";
     getline(cin, type);
 
     file << name << "," << cost << "," << expectedReturn << "," << risk << "," << type;
 
-    cout << "Investment data added successfully!" << endl;
+    cout << "\t\t\t\t\tInvestment data added successfully!" << endl;
 
     file.close();
 }
@@ -55,7 +55,7 @@ vector<Investment> readInvestmentData(const string& filename) {
     string line;
 
     if (!file.is_open()) {
-        cerr << "Error opening file: " << filename << endl;
+        cerr << "\t\t\t\t\tError opening file: " << filename << endl;
         return investments;
     }
 
@@ -72,7 +72,7 @@ vector<Investment> readInvestmentData(const string& filename) {
         tokens.push_back(line);
 
         if (tokens.size() != 5) {
-            cerr << "Error parsing line: " << line << endl;
+            cerr << "\t\t\t\t\tError parsing line: " << line << endl;
             continue;
         }
 
@@ -85,7 +85,7 @@ vector<Investment> readInvestmentData(const string& filename) {
 
             investments.emplace_back(name, cost, expectedReturn, risk, type);
         } catch (const invalid_argument& e) {
-            cerr << "Error parsing line: " << e.what() << endl;
+            cerr << "\t\t\t\t\tError parsing line: " << e.what() << endl;
         }
     }
 
@@ -97,24 +97,22 @@ void displayAllInvestments(const string& filename) {
     vector<Investment> investments = readInvestmentData(filename);
 
     if (investments.empty()) {
-        cout << "No investments found in the file." << endl;
+        cout << "\t\t\t\t\tNo investments found in the file." << endl;
         return;
     }
 
-    cout << "\n\n===== All Investments =====\n\n";
+    cout << "\n\n\t\t\t\t.......................All Investments........................\n\n";
     for (const auto& investment : investments) {
         investment.display();
     }
 }
 
 void displaySelectedInvestments(const vector<Investment>& selectedInvestments) {
-    cout << "\n\nSelected Investments for Maximum Return to Cost Ratio:\n\n";
     if (!selectedInvestments.empty()) {
         for (const auto& investment : selectedInvestments) {
             investment.display();
         }
     } else {
-        cout << "No suitable investments found within the budget." << endl;
+        cout << "\t\t\t\t\tNo suitable investments found within the budget." << endl;
     }
-    cout<<endl;
 }

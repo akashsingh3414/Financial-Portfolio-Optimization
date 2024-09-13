@@ -14,15 +14,15 @@ int main() {
     string filename = "../data/investments.csv";
 
     do {
-        cout << "-----------------------------------\n";
-        cout << "  Welcome to Financial Portfolio Optimization\n";
-        cout << "-----------------------------------\n";
-        cout << "Please choose an option:\n";
-        cout << "1. Insert new data into investments\n";
-        cout << "2. Get investment suggestions\n";
-        cout << "3. Check all available investments\n";
-        cout << "4. EXIT\n";
-        cout << "Enter your choice (1-4): ";
+        cout << "\n\t\t\t\t--------------------------------------------------------------\n";
+        cout << "\t\t\t\t..........Welcome to Financial Portfolio Optimization.........\n";
+        cout << "\t\t\t\t--------------------------------------------------------------\n\n";
+        cout << "\t\t\t\t\tPlease choose an option:\n";
+        cout << "\t\t\t\t\t1. Insert new data into investments\n";
+        cout << "\t\t\t\t\t2. Get investment suggestions\n";
+        cout << "\t\t\t\t\t3. Check all available investments\n";
+        cout << "\t\t\t\t\t4. EXIT\n";
+        cout << "\n\t\t\t\t\tEnter your choice (1-4): ";
         cin >> choice;
 
         switch (choice) {
@@ -37,10 +37,10 @@ int main() {
                 displayAllInvestments(filename);
                 break;
             case 4:
-                cout << "Exiting the program. Goodbye!\n";
+                cout << "\n\t\t\t\t\tExiting the program. Goodbye!\n";
                 break;
             default:
-                cout << "Invalid choice. Please enter a number between 1 and 4.\n";
+                cout << "\n\t\t\t\t\tInvalid choice. Please enter a number between 1 and 4.\n";
         }
         cout << endl;
     } while (choice != 4);

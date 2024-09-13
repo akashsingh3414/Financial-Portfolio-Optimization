@@ -27,8 +27,7 @@ string Investment::getType() const {
 }
 
 void Investment::display() const {
-    cout << "Name: " << name << ", Cost: " << cost << ", Expected Return: " << expectedReturn 
-    << ", Risk: " << risk << ", Type: " << type << endl;
+    cout << "\n\t\t\t\tName: " << name << ", Cost: " << cost << ", Expected Return: " << expectedReturn << ", Risk: " << risk << ", Type: " << type << "\n";
 }
 
 Constraints::Constraints(double budget, int periods, int riskTolerance)
@@ -47,8 +46,7 @@ int Constraints::getRiskTolerance() const {
 }
 
 void Constraints::display() const {
-    cout << "Budget: " << budget << ", Periods: " << periods
-              << ", Risk Tolerance: " << riskTolerance << endl;
+    cout << "\n\t\t\t\tBudget: " << budget << ", Periods: " << periods << ", Risk Tolerance: " << riskTolerance << "\n";
 }
 
 Constraints getUserConstraints() {
@@ -56,11 +54,12 @@ Constraints getUserConstraints() {
     int periods;
     int riskTolerance;
 
-    cout << "Enter total budget for investment: ";
+    cout << "\n\t\t\t\t\tWe'll require some data before proceeding further. Please provide them.\n\n";
+    cout << "\n\t\t\t\t\tEnter total budget for investment: ";
     cin >> budget;
-    cout << "Enter number of periods for optimization: ";
+    cout << "\t\t\t\t\tEnter number of periods for optimization: ";
     cin >> periods;
-    cout << "Enter risk tolerance (1 = Low, 2 = Medium, 3 = High): ";
+    cout << "\t\t\t\t\tEnter risk tolerance (1 = Low, 2 = Medium, 3 = High): ";
     cin >> riskTolerance;
 
     return Constraints(budget, periods, riskTolerance);

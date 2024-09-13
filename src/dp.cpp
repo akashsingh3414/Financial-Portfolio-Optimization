@@ -38,7 +38,6 @@ vector<Investment> dynamicProgramming::maximizeReturns(const vector<Investment>&
         }
     }
 
-    // Retrieve the investments involved in the optimal solution
     vector<Investment> result;
     int maxPeriod = periods;
     int maxBudget = budget;
@@ -46,8 +45,9 @@ vector<Investment> dynamicProgramming::maximizeReturns(const vector<Investment>&
         result.push_back(investments[j]);
     }
 
-    // Print the maximum return
-    cout << "\nMaximum return for " << constraints.getPeriods() << " years and " << constraints.getBudget() << " budget could be: " << dp[periods][budget] << "\n";
+    cout << "\n\t\t\t\tThis Algorithm Provides maximum return investments for multiple\n\t\t\t\tperiods without repeating the same investment in the same period\n";
+    cout << "\n\t\t\t\tMaximum return for " << constraints.getPeriods() << " years and " << constraints.getBudget() << " budget could be: " << dp[periods][budget] << "\n\n";
+
     
     return result;
 }

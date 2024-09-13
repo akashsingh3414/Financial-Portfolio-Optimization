@@ -37,7 +37,7 @@ void writeInvestmentDataToFile(const vector<pair<string, vector<double>>>& inves
             dataFile << "\"" << investment.first << "\" " << investment.second[0] << " " << investment.second[1] << " " << investment.second[1] - investment.second[0] << endl;
         }
     } else {
-        cerr << "Error opening file: " << filename << endl;
+        cerr << "\t\t\t\t\tError opening file: " << filename << endl;
     }
 }
 
@@ -45,7 +45,7 @@ void createGnuplotScriptForLineGraph(const string& dataFilename, const string& s
     ofstream scriptFile(scriptFilename);
 
     if (!scriptFile.is_open()) {
-        cerr << "Error opening file for writing: " << scriptFilename << endl;
+        cerr << "\t\t\t\t\tError opening file for writing: " << scriptFilename << endl;
         return;
     }
 
@@ -78,7 +78,7 @@ void plotInvestmentCostAndReturn(const vector<Investment>& investments, const Co
     string command = "gnuplot " + scriptFilename;
     system(command.c_str());
 
-    cout << "Plot generated and saved as '../data/imageInvestmentCostAndReturn.png'.\n";
+    cout << "\n\t\t\t\t\tPlot generated and saved as '../data/imageInvestmentCostAndReturn.png'.\n";
 }
 
 void plotInvestmentsVsReturn(const Constraints& constraints) {
