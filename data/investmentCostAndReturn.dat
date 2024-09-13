@@ -1,23 +1,23 @@
-"Aerospace" 270 300 30
-"Agriculture" 135 147.5 12.5
-"Automobile" 145 157 12
-"Biotechnology" 220 239 19
-"Bond" 142 156.21 14.21
-"Commodity" 215 240 25
-"Consumer Goods" 156.667 172.667 16
-"Cryptocurrency" 100 142.5 42.5
-"ETF" 180 200 20
-"Education" 160 171 11
-"Energy" 192 212.4 20.4
-"Finance" 120 129 9
-"Healthcare" 202 219.6 17.6
-"Infrastructure" 220 242 22
-"Mutual Fund" 162.5 176.77 14.27
-"Private Equity" 100 145 45
-"Real Estate" 260 282 22
-"Retail" 155 171 16
-"Stock" 198 212.444 14.444
-"Technology" 192.5 215.625 23.125
-"Telecommunication" 140 155 15
-"Transportation" 127.5 138.5 11
-"Utilities" 110 123 13
+"Aerospace" 1080 1200 120
+"Agriculture" 540 590 50
+"Automobile" 580 628 48
+"Biotechnology" 880 956 76
+"Bond" 568 624.84 56.84
+"Commodity" 860 960 100
+"Consumer Goods" 626.667 690.667 64
+"Cryptocurrency" 400 570 170
+"ETF" 720 800 80
+"Education" 640 684 44
+"Energy" 768 849.6 81.6
+"Finance" 480 516 36
+"Healthcare" 808 878.4 70.4
+"Infrastructure" 880 968 88
+"Mutual Fund" 650 707.08 57.08
+"Private Equity" 400 580 180
+"Real Estate" 1040 1128 88
+"Retail" 620 684 64
+"Stock" 792 849.776 57.776
+"Technology" 770 862.5 92.5
+"Telecommunication" 560 620 60
+"Transportation" 510 554 44
+"Utilities" 440 492 52

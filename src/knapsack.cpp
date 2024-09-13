@@ -29,13 +29,15 @@ vector<Investment> Knapsack::optimizeByKnapsack(const vector<Investment>& invest
 
     vector<Investment> selectedInvestments;
     double currentBudget = budget;
+    double maxReturn = 0;
 
     for (const auto& investment : filteredInvestments) {
         if (investment.getCost() <= currentBudget) {
             selectedInvestments.push_back(investment);
+            maxReturn += investment.getExpectedReturn();
             currentBudget -= investment.getCost();
         }
     }
-
+    cout << "\n\t\t\t\t\tMax Return for single period investment is " << maxReturn <<"\n";
     return selectedInvestments;
 }
