@@ -24,8 +24,8 @@ void groupInvestments(const vector<Investment>& investments, vector<pair<string,
         double avgCost = entry.second.first / investmentCounts[type];
         double avgCostPlusReturn = entry.second.second / investmentCounts[type];
         vector<double> temp;
-        temp.emplace_back(avgCost * constraints.getPeriods());
-        temp.emplace_back(avgCostPlusReturn * constraints.getPeriods());
+        temp.emplace_back(avgCost);
+        temp.emplace_back(avgCostPlusReturn);
         investmentData.push_back(make_pair(type, temp));
     }
 }

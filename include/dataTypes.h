@@ -27,16 +27,14 @@ private:
 
 class Constraints {
 public:
-    Constraints(double budget, int periods, int riskTolerance);
+    Constraints(double budget, int riskTolerance);
 
     double getBudget() const;
-    int getPeriods() const;
     int getRiskTolerance() const;
     void display() const;
 
 private:
     double budget;
-    int periods;
     int riskTolerance;
 };
 

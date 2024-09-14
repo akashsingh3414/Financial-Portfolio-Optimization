@@ -71,8 +71,8 @@ void getSuggestionsMenu(const Constraints& constraints) {
         cout << "\n\t\t\t\t--------------------------------------------------------------\n";
         cout << "\t\t\t\t.................Investment Suggestions Menu..................\n";
         cout << "\t\t\t\t--------------------------------------------------------------\n\n";
-        cout << "\t\t\t\t\t1. Single Period(=1) High Return to Cost Ratio" << endl;
-        cout << "\t\t\t\t\t2. Multi Period Optimization" << endl;
+        cout << "\t\t\t\t\t1. High Return to Cost Ratio-Wise(considering budget and risk) without repeatition" << endl;
+        cout << "\t\t\t\t\t2. Optimized Solution(considering budget & without risk) without repeatition" << endl;
         cout << "\t\t\t\t\t3. Various Filters" << endl;
         cout << "\t\t\t\t\t4. Plot Return to Cost Ratio Graph" << endl;
         cout << "\t\t\t\t\t5. Go Back to MAIN MENU" << endl;

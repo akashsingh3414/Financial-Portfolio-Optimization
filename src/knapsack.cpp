@@ -15,11 +15,11 @@ vector<Investment> Knapsack::optimizeByKnapsack(const vector<Investment>& invest
 
     for (const auto& investment : investments) {
         if (riskTolerance == 1 && investment.getRisk() <= 0.10) {
-            filteredInvestments.push_back(investment);
-        } else if (riskTolerance == 2 && investment.getRisk() <= 0.25) {
-            filteredInvestments.push_back(investment);
-        } else if (riskTolerance == 3) {
-            filteredInvestments.push_back(investment);
+            filteredInvestments.push_back(investment);  // Low risk tolerance (≤ 10%)
+        } else if (riskTolerance == 2 && investment.getRisk() <= 0.20 && investment.getRisk() > 0.10) {
+            filteredInvestments.push_back(investment);  // Medium risk tolerance (≤ 20%)
+        } else if (riskTolerance == 3 && investment.getRisk() <= 0.30 && investment.getRisk() > 0.20) {
+            filteredInvestments.push_back(investment);  // Higher risk tolerance (≤ 30%)
         }
     }
 
@@ -38,6 +38,7 @@ vector<Investment> Knapsack::optimizeByKnapsack(const vector<Investment>& invest
             currentBudget -= investment.getCost();
         }
     }
-    cout << "\n\t\t\t\t\tMax Return for single period investment is " << maxReturn <<"\n";
+
+    cout << "\n\t\t\t\t\tMax Return for single period investment is " << maxReturn << "\n";
     return selectedInvestments;
 }
