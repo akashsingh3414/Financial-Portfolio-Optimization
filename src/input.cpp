@@ -24,9 +24,8 @@ void variousFilterMenu(const Constraints& constraints) {
         cout << "\t\t\t\t\t1. High Return" << endl;
         cout << "\t\t\t\t\t2. Low Cost" << endl;
         cout << "\t\t\t\t\t3. Low Risk" << endl;
-        cout << "\t\t\t\t\t4. High Return, Low Cost & Low Risk" << endl;
-        cout << "\t\t\t\t\t5. Go Back to PREVIOUS MENU" << endl;
-        cout << "\n\t\t\t\t\tEnter your choice (1-5): ";
+        cout << "\t\t\t\t\t4. Go Back to PREVIOUS MENU" << endl;
+        cout << "\n\t\t\t\t\tEnter your choice (1-4): ";
         cin >> choice;
 
         switch (choice) {
@@ -46,20 +45,15 @@ void variousFilterMenu(const Constraints& constraints) {
                 displaySelectedInvestments(optimizedInvestments);
                 break;
             case 4:
-                optimizedInvestments = Greedy.sortByAllCombined(investments, constraints.getBudget());
-                cout << "\n\t\t\t\t\tShowing Results for High Return, Low Cost & Low Risk\n";
-                displaySelectedInvestments(optimizedInvestments);
-                break;
-            case 5:
                 cout << "\n\t\t\t\t\tExiting current menu.\n";
                 break;
             default:
-                cout << "\n\t\t\t\t\tInvalid choice. Please enter a number between 1 and 5.\n";
+                cout << "\n\t\t\t\t\tInvalid choice. Please enter a number between 1 and 4.\n";
                 break;
         }
 
         cout << endl;
-    } while (choice != 5);
+    } while (choice != 4);
 }
 
 void getSuggestionsMenu(const Constraints& constraints) {
@@ -71,8 +65,8 @@ void getSuggestionsMenu(const Constraints& constraints) {
         cout << "\n\t\t\t\t--------------------------------------------------------------\n";
         cout << "\t\t\t\t.................Investment Suggestions Menu..................\n";
         cout << "\t\t\t\t--------------------------------------------------------------\n\n";
-        cout << "\t\t\t\t\t1. High Return to Cost Ratio-Wise(considering budget and risk) without repeatition" << endl;
-        cout << "\t\t\t\t\t2. Optimized Solution(considering budget & without risk) without repeatition" << endl;
+        cout << "\t\t\t\t\t1. High Return to Cost Ratio-Wise(considering both budget and risk constraints) without repetition" << endl;
+        cout << "\t\t\t\t\t2. Optimized Solution(considering budget constraint only) without repetition" << endl;
         cout << "\t\t\t\t\t3. Various Filters" << endl;
         cout << "\t\t\t\t\t4. Plot Return to Cost Ratio Graph" << endl;
         cout << "\t\t\t\t\t5. Go Back to MAIN MENU" << endl;

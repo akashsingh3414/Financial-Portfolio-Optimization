@@ -12,7 +12,6 @@ public:
     std::vector<Investment> sortByHighReturn(const std::vector<Investment>& investments, double budget);
     std::vector<Investment> sortByLowCost(const std::vector<Investment>& investments, double budget);
     std::vector<Investment> sortByLowRisk(const std::vector<Investment>& investments, double budget);
-    std::vector<Investment> sortByAllCombined(const std::vector<Investment>& investments, double budget); //(High Return * Low Risk) / Low Cost
 };
 
 #endif // GREEDY_KNAPSACK_FILTERWISE_H

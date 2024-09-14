@@ -52,16 +52,3 @@ vector<Investment> Greedy::sortByLowRisk(const vector<Investment>& investments, 
 
     return selectInvestments(filteredInvestments, budget);
 }
-
-vector<Investment> Greedy::sortByAllCombined(const vector<Investment>& investments, double budget) {
-    vector<Investment> filteredInvestments = investments;
-
-    sort(filteredInvestments.begin(), filteredInvestments.end(), [](const Investment& a, const Investment& b) {
-        // Prioritizing high return per unit cost and low risk
-        double scoreA = (a.getExpectedReturn() / a.getCost()) - a.getRisk();
-        double scoreB = (b.getExpectedReturn() / b.getCost()) - b.getRisk();
-        return scoreA > scoreB;
-    });
-
-    return selectInvestments(filteredInvestments, budget);
-}
