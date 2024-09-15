@@ -84,16 +84,9 @@ void getSuggestionsMenu(const Constraints& constraints) {
                 break;
             case 2:
                 {
-                    string flag = "N";
                     dynamicProgramming dynamicProgramming;
-                    vector<Investment> optimizedInvestments = dynamicProgramming.maximizeReturns(investments, constraints, "N");
+                    vector<Investment> optimizedInvestments = dynamicProgramming.maximizeReturns(investments, constraints);
                     displaySelectedInvestments(optimizedInvestments);
-                    cout << "\n\n\t\t\t\tDo you want to get results without any risk constraint?(This may increase returns). Answer Y/N: ";
-                    cin >> flag;
-                    if(flag=="Y" or flag == "y") {
-                        vector<Investment> optimizedInvestments = dynamicProgramming.maximizeReturns(investments, constraints, flag);
-                        displaySelectedInvestments(optimizedInvestments);
-                    }
                 }
                 break;
             case 3:

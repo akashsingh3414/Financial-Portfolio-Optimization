@@ -10,25 +10,21 @@ dynamicProgramming::dynamicProgramming() {}
 
 dynamicProgramming::~dynamicProgramming() {}
 
-vector<Investment> dynamicProgramming::maximizeReturns(const vector<Investment>& investments, const Constraints& constraints, string flag) {
+vector<Investment> dynamicProgramming::maximizeReturns(const vector<Investment>& investments, const Constraints& constraints) {
     int n = investments.size();
     int budget = constraints.getBudget();
     double riskTolerance = constraints.getRiskTolerance();
 
     vector<Investment> filteredInvestments;
 
-    if (flag=="N" || flag=="n") {
-        for (const auto& investment : investments) {
-            if (riskTolerance == 1 && investment.getRisk() <= 0.10) {
-                filteredInvestments.push_back(investment);
-            } else if (riskTolerance == 2 && investment.getRisk() <= 0.20 && investment.getRisk() > 0.10) {
-                filteredInvestments.push_back(investment);
-            } else if (riskTolerance == 3 && investment.getRisk() <= 0.30 && investment.getRisk() > 0.20) {
-                filteredInvestments.push_back(investment);
-            }
+    for (const auto& investment : investments) {
+        if (riskTolerance == 1 && investment.getRisk() <= 0.10) {
+            filteredInvestments.push_back(investment);
+        } else if (riskTolerance == 2 && investment.getRisk() <= 0.20 && investment.getRisk() > 0.10) {
+            filteredInvestments.push_back(investment);
+        } else if (riskTolerance == 3 && investment.getRisk() <= 0.30 && investment.getRisk() > 0.20) {
+            filteredInvestments.push_back(investment);
         }
-    } else {
-        filteredInvestments = investments;
     }
 
     n = filteredInvestments.size();
