@@ -31,17 +31,17 @@ void variousFilterMenu(const Constraints& constraints) {
         switch (choice) {
             case 1:
                 optimizedInvestments = Greedy.sortByHighReturn(investments, constraints.getBudget());
-                cout << "\n\t\t\t\t\tShowing Results for High Return Investments\n\n";
+                cout << "\n\t\t\t\tShowing Results for High Return Investments\n\n";
                 displaySelectedInvestments(optimizedInvestments);
                 break;
             case 2:
                 optimizedInvestments = Greedy.sortByLowCost(investments, constraints.getBudget());
-                cout << "\n\t\t\t\t\tShowing Results for Low Cost Investments\n\n";
+                cout << "\n\t\t\t\tShowing Results for Low Cost Investments\n\n";
                 displaySelectedInvestments(optimizedInvestments);
                 break;
             case 3:
                 optimizedInvestments = Greedy.sortByLowRisk(investments, constraints.getBudget());
-                cout << "\n\t\t\t\t\tShowing Results for Low Risk Investments\n\n";
+                cout << "\n\t\t\t\tShowing Results for Low Risk Investments\n\n";
                 displaySelectedInvestments(optimizedInvestments);
                 break;
             case 4:
@@ -66,7 +66,7 @@ void getSuggestionsMenu(const Constraints& constraints) {
         cout << "\t\t\t\t.................Investment Suggestions Menu..................\n";
         cout << "\t\t\t\t--------------------------------------------------------------\n\n";
         cout << "\t\t\t\t\t1. High Return to Cost Ratio-Wise(considering both budget and risk constraints) without repetition" << endl;
-        cout << "\t\t\t\t\t2. Optimized Solution(considering budget constraint only) without repetition" << endl;
+        cout << "\t\t\t\t\t2. Optimized Solution without repetition" << endl;
         cout << "\t\t\t\t\t3. Various Filters" << endl;
         cout << "\t\t\t\t\t4. Plot Return to Cost Ratio Graph" << endl;
         cout << "\t\t\t\t\t5. Go Back to MAIN MENU" << endl;
@@ -78,15 +78,22 @@ void getSuggestionsMenu(const Constraints& constraints) {
                 {
                     Knapsack knapsack;
                     vector<Investment> optimizedInvestments = knapsack.optimizeByKnapsack(investments, constraints.getBudget(), constraints.getRiskTolerance());
-                    cout << "\n\t\t\t\t\tShowing Results for Single Period High Return to Cost Ratio within budget\n\n";
+                    cout << "\n\t\t\t\tShowing Results for Single Period High Return to Cost Ratio within budget\n\n";
                     displaySelectedInvestments(optimizedInvestments);
                 }
                 break;
             case 2:
                 {
+                    string flag = "N";
                     dynamicProgramming dynamicProgramming;
-                    vector<Investment> optimizedInvestments = dynamicProgramming.maximizeReturns(investments, constraints);
+                    vector<Investment> optimizedInvestments = dynamicProgramming.maximizeReturns(investments, constraints, "N");
                     displaySelectedInvestments(optimizedInvestments);
+                    cout << "\n\n\t\t\t\tDo you want to get results without any risk constraint?(This may increase returns). Answer Y/N: ";
+                    cin >> flag;
+                    if(flag=="Y" or flag == "y") {
+                        vector<Investment> optimizedInvestments = dynamicProgramming.maximizeReturns(investments, constraints, flag);
+                        displaySelectedInvestments(optimizedInvestments);
+                    }
                 }
                 break;
             case 3:

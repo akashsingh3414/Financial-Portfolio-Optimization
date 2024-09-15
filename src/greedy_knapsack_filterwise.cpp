@@ -11,14 +11,17 @@ Greedy::~Greedy() {}
 
 vector<Investment> selectInvestments(const vector<Investment>& sortedInvestments, double budget) {
     vector<Investment> selectedInvestments;
-    double currentBudget = budget;
+    double currentBudget = budget, maxReturn = 0;
 
     for (const auto& investment : sortedInvestments) {
         if (investment.getCost() <= currentBudget) {
             selectedInvestments.push_back(investment);
+            maxReturn += investment.getExpectedReturn();
             currentBudget -= investment.getCost();
         }
     }
+
+    cout << "\n\t\t\t\tMaximum return for " << "budget " << budget << " could be: " << maxReturn << "\n\n";
 
     return selectedInvestments;
 }

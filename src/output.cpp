@@ -78,7 +78,7 @@ void plotInvestmentCostAndReturn(const vector<Investment>& investments, const Co
     string command = "gnuplot " + scriptFilename;
     system(command.c_str());
 
-    cout << "\n\t\t\t\t\tPlot generated and saved as '../data/imageInvestmentCostAndReturn.png'.\n";
+    cout << "\n\t\t\t\tPlot generated and saved as '../data/imageInvestmentCostAndReturn.png'.\n";
 }
 
 void plotInvestmentsVsReturn(const Constraints& constraints) {

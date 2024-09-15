@@ -11,7 +11,7 @@ public:
     dynamicProgramming();
     ~dynamicProgramming();
     
-    vector<Investment> maximizeReturns(const vector<Investment>& investments, const Constraints& constraints);
+    vector<Investment> maximizeReturns(const vector<Investment>& investments, const Constraints& constraints, string flag);
 };
 
 #endif // DP_H
