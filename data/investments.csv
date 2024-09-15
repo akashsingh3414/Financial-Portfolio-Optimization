@@ -1,20 +1,20 @@
-StockA,100,20,0.15,Stock
+StockA,100,40,0.15,Stock
 BondB,200,30,0.05,Bond
 MutualFundC,150,25,0.10,Mutual Fund
-RealEstateD,300,40,0.20,Real Estate
-StockE,250,35,0.12,Stock
+RealEstateD,300,50,0.20,Real Estate
+StockE,220,15,0.4,Stock
 BondF,180,28,0.06,Bond
-CommodityG,220,32,0.18,Commodity
+CommodityG,220,40,0.18,Commodity
 MutualFundH,140,22,0.08,Mutual Fund
 ETFJ,170,26,0.09,ETF
 CryptocurrencyK,90,45,0.35,Cryptocurrency
-Apple Inc.,150.00,0.12,0.25,Stock
-Microsoft Corp.,250.00,0.10,0.20,Stock
-BondA,100.00,0.05,0.10,Bond
-MutualFundB,200.00,0.08,0.15,Mutual Fund
+Apple Inc.,210.00,25,0.25,Stock
+Microsoft Corp.,250.00,20,0.20,Stock
+BondA,100.00,15,0.10,Bond
+MutualFundB,200.00,8,0.15,Mutual Fund
 TechFund A,100,10,0.15,Technology
 HealthCorp B,150,12,0.10,Healthcare
-GreenEnergy C,200,18,0.25,Energy
+GreenEnergy C,230,30,0.25,Energy
 FinGrowth D,120,9,0.12,Finance
 RetailX E,80,7,0.20,Retail
 RealEstate F,250,15,0.30,Real Estate
@@ -22,7 +22,7 @@ Pharma G,180,14,0.18,Healthcare
 ConsumerGoods H,110,8,0.22,Consumer Goods
 AutoInnovators I,140,11,0.17,Automobile
 GlobalTech J,210,20,0.28,Technology
-EcoTransport K,95,9,0.13,Transportation
+EcoTransport K,170,20,0.22,Transportation
 AgriInvest L,130,10,0.16,Agriculture
 EduFutures M,160,11,0.19,Education
 SmartCity N,190,16,0.21,Infrastructure
@@ -53,12 +53,12 @@ E-CommerceFund LL,230,25,0.24,Retail
 HighYieldBond MM,130,8,0.09,Bond
 GlobalInfrastructure NN,250,28,0.21,Infrastructure
 TechInnovationFund OO,300,35,0.27,Technology
-StartupVenture PP,100,45,0.40,Private Equity
+StartupVenture PP,60,45,0.60,Private Equity
 CleanTech QQ,160,18,0.13,Energy
 TelecomFund RR,140,15,0.10,Telecommunication
 FoodTech SS,190,20,0.15,Consumer Goods
 AlternativeEnergy TT,210,30,0.29,Energy
-GlobalREIT UU,250,16,0.22,Real Estate
+GlobalREIT UU,500,80,0.30,Real Estate
 WaterResources VV,120,14,0.12,Utilities
-NanoTech WW,180,24,0.19,Technology
+NanoTech WW,180,22,0.19,Technology
 HealthFund XX,200,17,0.08,Healthcare

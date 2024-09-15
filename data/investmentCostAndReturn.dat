@@ -2,22 +2,22 @@
 "Agriculture" 135 147.5 12.5
 "Automobile" 145 157 12
 "Biotechnology" 220 239 19
-"Bond" 142 156.21 14.21
-"Commodity" 215 240 25
+"Bond" 142 159.2 17.2
+"Commodity" 215 244 29
 "Consumer Goods" 156.667 172.667 16
 "Cryptocurrency" 100 142.5 42.5
 "ETF" 180 200 20
 "Education" 160 171 11
-"Energy" 192 212.4 20.4
+"Energy" 198 220.8 22.8
 "Finance" 120 129 9
 "Healthcare" 202 219.6 17.6
 "Infrastructure" 220 242 22
-"Mutual Fund" 162.5 176.77 14.27
-"Private Equity" 100 145 45
-"Real Estate" 260 282 22
+"Mutual Fund" 162.5 178.75 16.25
+"Private Equity" 60 105 45
+"Real Estate" 310 346.8 36.8
 "Retail" 155 171 16
-"Stock" 198 212.444 14.444
-"Technology" 192.5 215.625 23.125
+"Stock" 204 227.4 23.4
+"Technology" 192.5 215.375 22.875
 "Telecommunication" 140 155 15
-"Transportation" 127.5 138.5 11
+"Transportation" 165 181.5 16.5
 "Utilities" 110 123 13

@@ -22,7 +22,7 @@ vector<Investment> dynamicProgramming::maximizeReturns(const vector<Investment>&
             filteredInvestments.push_back(investment);
         } else if (riskTolerance == 2 && investment.getRisk() <= 0.20 && investment.getRisk() > 0.10) {
             filteredInvestments.push_back(investment);
-        } else if (riskTolerance == 3 && investment.getRisk() <= 0.30 && investment.getRisk() > 0.20) {
+        } else if (riskTolerance == 3 && investment.getRisk() > 0.20) {
             filteredInvestments.push_back(investment);
         }
     }
