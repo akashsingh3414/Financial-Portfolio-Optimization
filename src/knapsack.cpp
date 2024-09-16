@@ -39,6 +39,6 @@ vector<Investment> Knapsack::optimizeByKnapsack(const vector<Investment>& invest
         }
     }
 
-    cout << "\n\t\t\t\tMax Return for single period investment is " << maxReturn << "\n";
+    cout << "\n\t\t\t\tMax Return using Knapsack & Greedy Algorithm could be " << maxReturn << "\n";
     return selectedInvestments;
 }

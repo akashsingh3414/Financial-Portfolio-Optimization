@@ -49,7 +49,7 @@ Constraints getUserConstraints() {
     double budget;
     int riskTolerance;
 
-    cout << "\n\t\t\t\t\tWe'll require some data before proceeding further. Please provide them.\n\n";
+    cout << "\n\t\t\t\t\tIt requires some data before proceeding further. Please provide them.\n\n";
     cout << "\n\t\t\t\t\tEnter total budget for investment: ";
     cin >> budget;
     cout << "\t\t\t\t\tEnter risk tolerance (1 = Low, 2 = Medium, 3 = High): ";

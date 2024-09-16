@@ -65,10 +65,10 @@ void getSuggestionsMenu(const Constraints& constraints) {
         cout << "\n\t\t\t\t--------------------------------------------------------------\n";
         cout << "\t\t\t\t.................Investment Suggestions Menu..................\n";
         cout << "\t\t\t\t--------------------------------------------------------------\n\n";
-        cout << "\t\t\t\t\t1. High Return to Cost Ratio-Wise(considering both budget and risk constraints) without repetition" << endl;
-        cout << "\t\t\t\t\t2. Optimized Solution without repetition" << endl;
+        cout << "\t\t\t\t\t1. High Return to Cost Ratio-Wise investments" << endl;
+        cout << "\t\t\t\t\t2. Optimized Solution" << endl;
         cout << "\t\t\t\t\t3. Various Filters" << endl;
-        cout << "\t\t\t\t\t4. Plot Return to Cost Ratio Graph" << endl;
+        cout << "\t\t\t\t\t4. Plot Average Return, Average Cost & Profit Graph" << endl;
         cout << "\t\t\t\t\t5. Go Back to MAIN MENU" << endl;
         cout << "\n\t\t\t\t\tEnter your choice (1-5): ";
         cin >> choice;
@@ -78,7 +78,7 @@ void getSuggestionsMenu(const Constraints& constraints) {
                 {
                     Knapsack knapsack;
                     vector<Investment> optimizedInvestments = knapsack.optimizeByKnapsack(investments, constraints.getBudget(), constraints.getRiskTolerance());
-                    cout << "\n\t\t\t\tShowing Results for Single Period High Return to Cost Ratio within budget\n\n";
+                    cout << "\n\t\t\t\tShowing Results for High Return to Cost Ratio within budget\n\n";
                     displaySelectedInvestments(optimizedInvestments);
                 }
                 break;

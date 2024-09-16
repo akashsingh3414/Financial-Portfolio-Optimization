@@ -52,7 +52,7 @@ vector<Investment> dynamicProgramming::maximizeReturns(const vector<Investment>&
         result.push_back(filteredInvestments[j]);
     }
 
-    cout << "\n\t\t\t\tMaximum return for " << "budget " << constraints.getBudget() << " could be: " << dp[budget] << "\n\n";
+    cout << "\n\t\t\t\tMaximum return using Dynamic Programming for " << "budget " << constraints.getBudget() << " could be: " << dp[budget] << "\n\n";
 
     return result;
 }
