@@ -16,7 +16,7 @@ vector<Investment> Knapsack::optimizeByKnapsack(const vector<Investment>& invest
     for (const auto& investment : investments) {
         if (riskTolerance == 1 && investment.getRisk() <= 0.10) {
             filteredInvestments.push_back(investment);  
-        } else if (riskTolerance == 2 && investment.getRisk() <= 0.20 && investment.getRisk() > 0.10) {
+        } else if (riskTolerance == 2 && investment.getRisk() <= 0.20) {
             filteredInvestments.push_back(investment);  
         } else if (riskTolerance == 3 && investment.getRisk() > 0.20) {
             filteredInvestments.push_back(investment);  

@@ -25,7 +25,7 @@ vector<Investment> dynamicProgramming::maximizeReturns(const vector<Investment>&
         for (const auto& investment : investments) {
             if (riskTolerance == 1 && investment.getRisk() <= 0.10) {
                 filteredInvestments.push_back(investment);
-            } else if (riskTolerance == 2 && investment.getRisk() <= 0.20 && investment.getRisk() > 0.10) {
+            } else if (riskTolerance == 2 && investment.getRisk() <= 0.20) {
                 filteredInvestments.push_back(investment);
             } else if (riskTolerance == 3 && investment.getRisk() > 0.20) {
                 filteredInvestments.push_back(investment);
@@ -34,30 +34,28 @@ vector<Investment> dynamicProgramming::maximizeReturns(const vector<Investment>&
     } else {
         filteredInvestments = investments;
     }
-
+    
     n = filteredInvestments.size();
 
     vector<double> dp(budget + 1, 0);
     vector<vector<int>> selected(budget + 1);
 
-    for (int b = 0; b <= budget; b++) {
-        for (int j = 0; j < n; j++) {
-            int cost = filteredInvestments[j].getCost();
-            double returnVal = filteredInvestments[j].getExpectedReturn();
+    for (int j = 0; j < n; ++j) {
+        int cost = filteredInvestments[j].getCost();
+        int returnVal = filteredInvestments[j].getExpectedReturn();
 
-            if (b >= cost) {
-                if (dp[b] < dp[b - cost] + returnVal && find(selected[b - cost].begin(), selected[b - cost].end(), j) == selected[b - cost].end()) {
-                    dp[b] = dp[b - cost] + returnVal;
-                    selected[b] = selected[b - cost];
-                    selected[b].push_back(j);
-                }
+        for (int b = budget; b >= cost; --b) {
+            if (dp[b] < dp[b - cost] + returnVal) {
+                dp[b] = dp[b - cost] + returnVal;
+                selected[b] = selected[b - cost];
+                selected[b].push_back(j);
             }
         }
     }
 
     vector<Investment> result;
-    for (int j : selected[budget]) {
-        result.push_back(filteredInvestments[j]);
+    for (int idx : selected[budget]) {
+        result.push_back(filteredInvestments[idx]);
     }
 
     cout << "\n\t\t\t\tMaximum return using Dynamic Programming for budget " << constraints.getBudget() << " could be: " << dp[budget] << "\n\n";
