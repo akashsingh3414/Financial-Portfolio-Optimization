@@ -2,7 +2,7 @@
 #include <vector>
 #include "../include/input.h"
 #include "../include/dataTypes.h"
-#include "../include/greedy_knapsack_filterwise.h"
+#include "../include/filterwise.h"
 #include "../include/knapsack.h"
 #include "../include/utils.h"
 #include "../include/output.h"
@@ -24,8 +24,9 @@ void variousFilterMenu(const Constraints& constraints) {
         cout << "\t\t\t\t\t1. High Return" << endl;
         cout << "\t\t\t\t\t2. Low Cost" << endl;
         cout << "\t\t\t\t\t3. Low Risk" << endl;
-        cout << "\t\t\t\t\t4. Go Back to PREVIOUS MENU" << endl;
-        cout << "\n\t\t\t\t\tEnter your choice (1-4): ";
+        cout << "\t\t\t\t\t4. Investment Type" << endl;
+        cout << "\t\t\t\t\t5. Go Back to PREVIOUS MENU" << endl;
+        cout << "\n\t\t\t\t\tEnter your choice (1-5): ";
         cin >> choice;
 
         switch (choice) {
@@ -44,7 +45,16 @@ void variousFilterMenu(const Constraints& constraints) {
                 cout << "\n\t\t\t\tShowing Results for Low Risk Investments\n\n";
                 displaySelectedInvestments(optimizedInvestments);
                 break;
-            case 4:
+            case 4: {
+                    string investmentType;
+                    cout << "\n\t\t\t\tType of Investments you are looking for? ";
+                    cin >> investmentType ;
+                    optimizedInvestments = Greedy.filterByType(investments, investmentType, constraints.getBudget());
+                    cout << "\n\t\t\t\tShowing Results for "<< investmentType <<" investments\n\n";
+                    displaySelectedInvestments(optimizedInvestments);
+                }
+                break;
+            case 5:
                 cout << "\n\t\t\t\t\tExiting current menu.\n";
                 break;
             default:
@@ -53,7 +63,7 @@ void variousFilterMenu(const Constraints& constraints) {
         }
 
         cout << endl;
-    } while (choice != 4);
+    } while (choice != 5);
 }
 
 void getSuggestionsMenu(const Constraints& constraints) {

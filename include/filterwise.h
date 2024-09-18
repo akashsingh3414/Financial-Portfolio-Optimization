@@ -1,5 +1,5 @@
-#ifndef GREEDY_KNAPSACK_FILTERWISE_H
-#define GREEDY_KNAPSACK_FILTERWISE_H
+#ifndef FILTERWISE_H
+#define FILTERWISE_H
 
 #include "dataTypes.h"
 #include <vector>
@@ -12,6 +12,7 @@ public:
     std::vector<Investment> sortByHighReturn(const std::vector<Investment>& investments, double budget);
     std::vector<Investment> sortByLowCost(const std::vector<Investment>& investments, double budget);
     std::vector<Investment> sortByLowRisk(const std::vector<Investment>& investments, double budget);
+    std::vector<Investment> filterByType(const vector<Investment>& investments, const string& inputType, double budget);
 };
 
-#endif // GREEDY_KNAPSACK_FILTERWISE_H
+#endif // FILTERWISE_H

@@ -1,6 +1,8 @@
 #include <vector>
 #include <algorithm>
-#include "../include/greedy_knapsack_filterwise.h"
+#include <cctype>
+#include <iostream>
+#include "../include/filterwise.h"
 #include "../include/dataTypes.h"
 
 using namespace std;
@@ -8,6 +10,12 @@ using namespace std;
 Greedy::Greedy() {}
 
 Greedy::~Greedy() {}
+
+string toLowercase(const string& str) {
+    string lowerStr = str;
+    transform(lowerStr.begin(), lowerStr.end(), lowerStr.begin(), ::tolower);
+    return lowerStr;
+}
 
 vector<Investment> selectInvestments(const vector<Investment>& sortedInvestments, double budget) {
     vector<Investment> selectedInvestments;
@@ -21,7 +29,7 @@ vector<Investment> selectInvestments(const vector<Investment>& sortedInvestments
         }
     }
 
-    cout << "\n\t\t\t\tMaximum return for " << "budget " << budget << " could be: " << maxReturn << "\n\n";
+    cout << "\n\t\t\t\tMaximum return for budget " << budget << " could be: " << maxReturn << "\n\n";
 
     return selectedInvestments;
 }
@@ -52,6 +60,20 @@ vector<Investment> Greedy::sortByLowRisk(const vector<Investment>& investments, 
     sort(filteredInvestments.begin(), filteredInvestments.end(), [](const Investment& a, const Investment& b) {
         return a.getRisk() < b.getRisk();
     });
+
+    return selectInvestments(filteredInvestments, budget);
+}
+
+vector<Investment> Greedy::filterByType(const vector<Investment>& investments, const string& inputType, double budget) {
+    vector<Investment> filteredInvestments;
+    string lowerInputType = toLowercase(inputType);
+
+    for (const auto& investment : investments) {
+        string investmentType = toLowercase(investment.getType());
+        if (investmentType == lowerInputType) {
+            filteredInvestments.push_back(investment);
+        }
+    }
 
     return selectInvestments(filteredInvestments, budget);
 }
