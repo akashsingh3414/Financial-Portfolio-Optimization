@@ -1,11 +1,14 @@
 #include "../include/dataTypes.h"
-#include <fstream>
-#include <sstream>
-#include <iostream>
-#include <vector>
-#include <string>
+#include <limits>
 
-using namespace std;
+// ANSI color codes for better visuals
+const string RED = "\033[31m";        // Red text
+const string GREEN = "\033[32m";      // Green text
+const string YELLOW = "\033[33m";     // Yellow text
+const string BLUE = "\033[34m";       // Blue text
+const string SKY_BLUE = "\033[36m";    // Sky Blue text
+const string MAGENTA = "\033[35m";    // Magenta text
+const string RESET = "\033[0m";       // Reset color
 
 Investment::Investment(const string& name, double cost, double expectedReturn, double risk, const string& type)
     : name(name), cost(cost), expectedReturn(expectedReturn), risk(risk), type(type) {}
@@ -26,8 +29,16 @@ string Investment::getType() const {
     return type;
 }
 
+string Investment::getName() const {
+    return name;
+}
+
 void Investment::display() const {
-    cout << "\n\t\t\t\tName: " << name << ", Cost: " << cost << ", Expected Return: " << expectedReturn << ", Risk: " << risk << ", Type: " << type << "\n";
+    cout << "\n\t\t\t\tName: " << name 
+         << ", Cost: " << cost 
+         << ", Expected Return: " << expectedReturn 
+         << ", Risk: " << risk 
+         << ", Type: " << type << "\n";
 }
 
 Constraints::Constraints(double budget, int riskTolerance)
@@ -42,18 +53,48 @@ int Constraints::getRiskTolerance() const {
 }
 
 void Constraints::display() const {
-    cout << "\n\t\t\t\tBudget: " << budget << ", Risk Tolerance: " << riskTolerance << "\n";
+    cout << "\n\t\t\t\tBudget: " << budget 
+         << ", Risk Tolerance: " << riskTolerance << "\n";
 }
 
 Constraints getUserConstraints() {
     double budget;
     int riskTolerance;
 
-    cout << "\n\t\t\t\t\tIt requires some data before proceeding further. Please provide them.\n\n";
-    cout << "\n\t\t\t\t\tEnter total budget for investment: ";
-    cin >> budget;
-    cout << "\t\t\t\t\tEnter risk tolerance (1 = Low, 2 = Medium, 3 = High): ";
-    cin >> riskTolerance;
+    cout << "\n\t\t\t\tIt requires some data before proceeding further. Please provide them.\n\n";
 
-    return Constraints(budget,riskTolerance);
+    // Input validation for budget
+    while (true) {
+        cout << "\n\t\t\t\t" << SKY_BLUE << "Enter total budget for investment: " << RESET;
+        cin >> budget;
+
+        // Check if the input is valid (a positive number)
+        if (cin.fail() || budget <= 0) {
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore invalid input
+            cout << "\t\t\t\t" << RED << "Invalid input. Please enter a positive number for the budget." << RESET << "\n";
+        } else {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer
+            break; // Valid input, exit the loop
+        }
+    }
+
+    // Input validation for risk tolerance
+    while (true) {
+        cout << "\t\t\t\t" << SKY_BLUE << "Enter risk tolerance (1 = Low, 2 = Medium, 3 = High): " << RESET;
+        cin >> riskTolerance;
+
+        // Check if the input is valid (1, 2, or 3)
+        if (cin.fail() || riskTolerance < 1 || riskTolerance > 3) {
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore invalid input
+            cout << "\t\t\t\t" << RED << "Invalid input. Please enter 1, 2, or 3 for risk tolerance." << RESET << "\n";
+        } else {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer
+            break; // Valid input, exit the loop
+        }
+    }
+
+    return Constraints(budget, riskTolerance);
 }
+

@@ -5,10 +5,18 @@
 #include "../include/filterwise.h"
 #include "../include/knapsack.h"
 #include "../include/utils.h"
-#include "../include/output.h"
 #include "../include/dp.h"
 
 using namespace std;
+
+// ANSI color codes for better visuals
+const string RED = "\033[31m";        // Red text
+const string GREEN = "\033[32m";      // Green text
+const string YELLOW = "\033[33m";     // Yellow text
+const string BLUE = "\033[34m";       // Blue text
+const string SKY_BLUE = "\033[36m";    // Sky Blue text
+const string MAGENTA = "\033[35m";    // Magenta text
+const string RESET = "\033[0m";       // Reset color
 
 void variousFilterMenu(const Constraints& constraints) {
     int choice;
@@ -18,52 +26,43 @@ void variousFilterMenu(const Constraints& constraints) {
     vector<Investment> optimizedInvestments;
 
     do {
-        cout << "\n\t\t\t\t--------------------------------------------------------------\n";
-        cout << "\t\t\t\t.....................Select One Filter......................\n";
-        cout << "\t\t\t\t--------------------------------------------------------------\n\n";
-        cout << "\t\t\t\t\t1. High Return" << endl;
-        cout << "\t\t\t\t\t2. Low Cost" << endl;
-        cout << "\t\t\t\t\t3. Low Risk" << endl;
-        cout << "\t\t\t\t\t4. Investment Type" << endl;
-        cout << "\t\t\t\t\t5. Go Back to PREVIOUS MENU" << endl;
-        cout << "\n\t\t\t\t\tEnter your choice (1-5): ";
+        cout << "\n\t\t\t" << BLUE << "--------------------------------------------------------------\n" << RESET;
+        cout << "\t\t\t" << ".....................Select One Filter......................" << "\n";
+        cout << "\t\t\t" << BLUE << "--------------------------------------------------------------\n" << RESET << "\n";
+        
+        cout << "\t\t\t\t" << YELLOW << "1. High Return" << RESET << endl;
+        cout << "\t\t\t\t" << YELLOW << "2. Low Cost" << RESET << endl;
+        cout << "\t\t\t\t" << YELLOW << "3. Low Risk" << RESET << endl;
+        cout << "\t\t\t\t" << YELLOW << "4. Go Back to PREVIOUS MENU" << RESET << endl;
+        cout << "\n\t\t\t\tEnter your choice (1-4): ";
         cin >> choice;
 
         switch (choice) {
             case 1:
                 optimizedInvestments = Greedy.sortByHighReturn(investments, constraints.getBudget());
-                cout << "\n\t\t\t\tShowing Results for High Return Investments\n\n";
+                cout << "\n\t\t\t\tShowing Results for High Return Investments\n";
                 displaySelectedInvestments(optimizedInvestments);
                 break;
             case 2:
                 optimizedInvestments = Greedy.sortByLowCost(investments, constraints.getBudget());
-                cout << "\n\t\t\t\tShowing Results for Low Cost Investments\n\n";
+                cout << "\n\t\t\t\tShowing Results for Low Cost Investments\n";
                 displaySelectedInvestments(optimizedInvestments);
                 break;
             case 3:
                 optimizedInvestments = Greedy.sortByLowRisk(investments, constraints.getBudget());
-                cout << "\n\t\t\t\tShowing Results for Low Risk Investments\n\n";
+                cout << "\n\t\t\t\tShowing Results for Low Risk Investments\n";
                 displaySelectedInvestments(optimizedInvestments);
                 break;
-            case 4: {
-                    string investmentType;
-                    cout << "\n\t\t\t\tType of Investments you are looking for? ";
-                    cin >> investmentType ;
-                    optimizedInvestments = Greedy.filterByType(investments, investmentType, constraints.getBudget());
-                    cout << "\n\t\t\t\tShowing Results for "<< investmentType <<" investments\n\n";
-                    displaySelectedInvestments(optimizedInvestments);
-                }
-                break;
-            case 5:
-                cout << "\n\t\t\t\t\tExiting current menu.\n";
+            case 4:
+                cout << "\n\t\t\t\t" << RED << "Exiting current menu" << RESET << "\n";
                 break;
             default:
-                cout << "\n\t\t\t\t\tInvalid choice. Please enter a number between 1 and 4.\n";
+                cout << "\n\t\t\t\t" << RED << "Invalid choice. Please enter a number between 1 and 4." << RESET << "\n";
                 break;
         }
 
         cout << endl;
-    } while (choice != 5);
+    } while (choice != 4);
 }
 
 void getSuggestionsMenu(const Constraints& constraints) {
@@ -72,15 +71,16 @@ void getSuggestionsMenu(const Constraints& constraints) {
     vector<Investment> investments = readInvestmentData(filename);
 
     do {
-        cout << "\n\t\t\t\t--------------------------------------------------------------\n";
-        cout << "\t\t\t\t.................Investment Suggestions Menu..................\n";
-        cout << "\t\t\t\t--------------------------------------------------------------\n\n";
-        cout << "\t\t\t\t\t1. High Return to Cost Ratio-Wise investments" << endl;
-        cout << "\t\t\t\t\t2. Optimized Solution" << endl;
-        cout << "\t\t\t\t\t3. Various Filters" << endl;
-        cout << "\t\t\t\t\t4. Plot Average Return, Average Cost & Profit Graph" << endl;
-        cout << "\t\t\t\t\t5. Go Back to MAIN MENU" << endl;
-        cout << "\n\t\t\t\t\tEnter your choice (1-5): ";
+        cout << "\n\t\t\t" << "--------------------------------------------------------------\n";
+        cout << "\t\t\t" << ".................Investment Suggestions Menu.................." << "\n";
+        cout << "\t\t\t" << "--------------------------------------------------------------\n" << "\n";
+        
+        cout << "\t\t\t\t" << YELLOW << "1. High Return to Cost Ratio-Wise investments" << RESET << endl;
+        cout << "\t\t\t\t" << YELLOW << "2. Optimized Solution" << RESET << endl;
+        cout << "\t\t\t\t" << YELLOW << "3. Various Filters" << RESET << endl;
+        cout << "\t\t\t\t" << YELLOW << "4. Go Back to MAIN MENU" << RESET << endl;
+
+        cout << "\n\t\t\t\t" << BLUE << "Enter your choice (1-4): " << RESET;
         cin >> choice;
 
         switch (choice) {
@@ -88,7 +88,7 @@ void getSuggestionsMenu(const Constraints& constraints) {
                 {
                     Knapsack knapsack;
                     vector<Investment> optimizedInvestments = knapsack.optimizeByKnapsack(investments, constraints.getBudget(), constraints.getRiskTolerance());
-                    cout << "\n\t\t\t\tShowing Results for High Return to Cost Ratio within budget\n\n";
+                    cout << "\n\t\t\t\tShowing Results for High Return to Cost Ratio within budget\n";
                     displaySelectedInvestments(optimizedInvestments);
                 }
                 break;
@@ -96,6 +96,7 @@ void getSuggestionsMenu(const Constraints& constraints) {
                 {
                     dynamicProgramming dynamicProgramming;
                     vector<Investment> optimizedInvestments = dynamicProgramming.maximizeReturns(investments, constraints);
+                    cout << "\n\t\t\t\tShowing Optimized result for max returns within budget\n";
                     displaySelectedInvestments(optimizedInvestments);
                 }
                 break;
@@ -103,15 +104,12 @@ void getSuggestionsMenu(const Constraints& constraints) {
                 variousFilterMenu(constraints);
                 break;
             case 4:
-                plotInvestmentsVsReturn(constraints);
-                break;
-            case 5:
-                cout << "\n\t\t\t\t\tExiting the suggestions menu.\n";
+                cout << "\n\t\t\t\t" << RED << "Exiting the suggestions menu." << RESET << "\n";
                 break;
             default:
-                cout << "\t\t\t\t\tInvalid choice. Please enter a number between 1 and 5.\n";
+                cout << "\t\t\t\t" << RED << "Invalid choice. Please enter a number between 1 and 4." << RESET << "\n";
                 break;
         }
         cout << endl;
-    } while (choice != 5);
+    } while (choice != 4);
 }

@@ -1,8 +1,19 @@
 #include <iostream>
 #include "../include/utils.h"
 #include "../include/input.h"
+#include "../include/output.h"
+#include "../include/dataTypes.h"
 
 using namespace std;
+
+// ANSI color codes for vibrant visuals
+const string RED = "\033[31m";         // Red text
+const string GREEN = "\033[32m";       // Green text
+const string YELLOW = "\033[33m";      // Yellow text
+const string BLUE = "\033[34m";        // Blue text
+const string CYAN = "\033[36m";        // Cyan text
+const string WHITE = "\033[37m";       // White text
+const string RESET = "\033[0m";        // Reset color
 
 Constraints inputMenu() {
     Constraints constraints = getUserConstraints();
@@ -11,39 +22,47 @@ Constraints inputMenu() {
 
 int main() {
     int choice;
-        string filename = "data\\investments.csv";
+    string filename = "data\\investments.csv";
 
     do {
-        cout << "\n\t\t\t\t--------------------------------------------------------------\n";
-        cout << "\t\t\t\t..........Welcome to Financial Portfolio Optimization.........\n";
-        cout << "\t\t\t\t--------------------------------------------------------------\n\n";
-        cout << "\t\t\t\t\tPlease choose an option:\n";
-        cout << "\t\t\t\t\t1. Insert new data into investments\n";
-        cout << "\t\t\t\t\t2. Get investment suggestions\n";
-        cout << "\t\t\t\t\t3. Check all available investments\n";
-        cout << "\t\t\t\t\t4. EXIT\n";
-        cout << "\n\t\t\t\t\tEnter your choice (1-4): ";
+        cout << "\n";
+        cout << "\t\t\t--------------------------------------------------------------\n";
+        cout << "\t\t\t" << ".......Welcome to Financial Portfolio Optimization Tool......." << "\n";
+        cout << "\t\t\t--------------------------------------------------------------\n\n";
+        cout << "\t\t\t\t" << CYAN << "Please choose an option:" << RESET << "\n\n";
+        cout << "\t\t\t\t" << YELLOW << "1. Insert new data into investments" << RESET << "\n";
+        cout << "\t\t\t\t" << YELLOW << "2. Get investment suggestions" << RESET << "\n";
+        cout << "\t\t\t\t" << YELLOW << "3. Check all available investments" << RESET << "\n";
+        cout << "\t\t\t\t" << YELLOW << "4. Plot Average Return, Average Cost & Profit Graph" << RESET << endl;
+        cout << "\t\t\t\t" << YELLOW << "5. EXIT" << RESET << "\n";
+        cout << "\n\t\t\t\t" << BLUE << "Enter your choice (1-5): " << RESET;
+
         cin >> choice;
+        cout << endl;
 
         switch (choice) {
             case 1:
                 insertDataIntoCSV(filename);
                 break;
-            case 2:{
+            case 2: {
                 Constraints inputConstraints = inputMenu();
-                getSuggestionsMenu(inputConstraints);}
+                getSuggestionsMenu(inputConstraints);
                 break;
+            }
             case 3:
                 displayAllInvestments(filename);
                 break;
             case 4:
-                cout << "\n\t\t\t\t\tExiting the program. Goodbye!\n";
+                plotInvestmentsVsReturn();
+                break;
+            case 5:
+                cout << "\t\t\t\t" << RED << "Exiting the program. Goodbye!" << RESET << "\n";
                 break;
             default:
-                cout << "\n\t\t\t\t\tInvalid choice. Please enter a number between 1 and 4.\n";
+                cout << "\t\t\t\t" << RED << "Invalid choice. Please enter a number between 1 and 5." << RESET << "\n";
         }
         cout << endl;
-    } while (choice != 4);
+    } while (choice != 5);
 
     return 0;
 }

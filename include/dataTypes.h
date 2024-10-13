@@ -15,6 +15,7 @@ public:
     double getExpectedReturn() const;
     double getRisk() const;
     string getType() const;
+    string getName() const;
     void display() const;
 
 private:
