@@ -12,7 +12,7 @@ using namespace std;
 
 void variousFilterMenu(const Constraints& constraints) {
     int choice;
-    string filename = "../data/investments.csv";
+    string filename = "data\\investments.csv";    
     vector<Investment> investments = readInvestmentData(filename);
     Greedy Greedy;
     vector<Investment> optimizedInvestments;
@@ -68,7 +68,7 @@ void variousFilterMenu(const Constraints& constraints) {
 
 void getSuggestionsMenu(const Constraints& constraints) {
     int choice;
-    string filename = "../data/investments.csv";
+    string filename = "data\\investments.csv";    
     vector<Investment> investments = readInvestmentData(filename);
 
     do {

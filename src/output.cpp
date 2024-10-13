@@ -50,7 +50,7 @@ void createGnuplotScriptForLineGraph(const string& dataFilename, const string& s
     }
 
     scriptFile << "set terminal png size 1400,1000\n";
-    scriptFile << "set output '../data/imageInvestmentCostAndReturn.png'\n";
+    scriptFile << "set output 'data\\imageInvestmentCostAndReturn.png'\n";
     scriptFile << "set title 'Investment Type vs Cost and Return (for given period)'\n";
     scriptFile << "set xlabel 'Investment Type'\n";
     scriptFile << "set ylabel 'Value'\n";
@@ -66,8 +66,8 @@ void createGnuplotScriptForLineGraph(const string& dataFilename, const string& s
 }
 
 void plotInvestmentCostAndReturn(const vector<Investment>& investments, const Constraints& constraints) {
-    string dataFilename = "../data/investmentCostAndReturn.dat";  
-    string scriptFilename = "../data/plotInvestmentCostAndReturn.gp";
+    string dataFilename = "data\\investmentCostAndReturn.dat";  
+    string scriptFilename = "data\\plotInvestmentCostAndReturn.gp";
 
     vector<pair<string, vector<double>>> investmentData;
 
@@ -78,10 +78,10 @@ void plotInvestmentCostAndReturn(const vector<Investment>& investments, const Co
     string command = "gnuplot " + scriptFilename;
     system(command.c_str());
 
-    cout << "\n\t\t\t\tPlot generated and saved as '../data/imageInvestmentCostAndReturn.png'.\n";
+    cout << "\n\t\t\t\tPlot generated and saved as 'data\\imageInvestmentCostAndReturn.png'.\n";
 }
 
 void plotInvestmentsVsReturn(const Constraints& constraints) {
-    vector<Investment> investments = readInvestmentData("../data/investments.csv");
+    vector<Investment> investments = readInvestmentData("data\\investments.csv");
     plotInvestmentCostAndReturn(investments, constraints);
 }
