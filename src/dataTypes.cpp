@@ -33,14 +33,6 @@ string Investment::getName() const {
     return name;
 }
 
-void Investment::display() const {
-    cout << "\n\t\t\t\tName: " << name 
-         << ", Cost: " << cost 
-         << ", Expected Return: " << expectedReturn 
-         << ", Risk: " << risk 
-         << ", Type: " << type << "\n";
-}
-
 Constraints::Constraints(double budget, int riskTolerance)
     : budget(budget), riskTolerance(riskTolerance) {}
 
@@ -50,11 +42,6 @@ double Constraints::getBudget() const {
 
 int Constraints::getRiskTolerance() const {
     return riskTolerance;
-}
-
-void Constraints::display() const {
-    cout << "\n\t\t\t\tBudget: " << budget 
-         << ", Risk Tolerance: " << riskTolerance << "\n";
 }
 
 Constraints getUserConstraints() {

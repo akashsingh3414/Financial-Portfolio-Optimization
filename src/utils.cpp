@@ -5,12 +5,14 @@
 #include <iomanip>
 #include "../include/utils.h"
 #include "../include/dataTypes.h"
-#include <limits> // For std::numeric_limits
+#include <limits> // For numeric_limits
+#include <algorithm>  // For max
 
 using namespace std;
 
 const string RED = "\033[31m";        // Red text
 const string RESET = "\033[0m";       // Reset color
+const string GREEN = "\033[32m";       // Green text
 
 double getPositiveDouble(const string& prompt) {
     double value;
@@ -147,69 +149,100 @@ vector<Investment> readInvestmentData(const string& filename) {
 }
 
 void displayAllInvestments(const string& filename) {
-    vector<Investment> investments = readInvestmentData(filename);
+    vector<Investment> investments = readInvestmentData(filename);  // Assuming you have this function
 
     if (investments.empty()) {
         cout << "\t\t\t\t" << RED << "No investments found in the file." << RESET << endl;
         return;
     }
 
-    // Define fixed maximum widths for the columns
-    const int nameWidth = 30;
-    const int costWidth = 10;
-    const int expectedReturnWidth = 15;
-    const int riskWidth = 6;
-    const int typeWidth = 25;
+    // Calculate maximum lengths for dynamic column widths
+    int nameWidth = 4; // "Name"
+    int costWidth = 4; // "Cost"
+    int expectedReturnWidth = 15; // "Expected Return"
+    int riskWidth = 4; // "Risk"
+    int typeWidth = 4; // "Type"
+
+    int totalInvestments = 0;
+
+    for (const auto& investment : investments) {
+        nameWidth = max(nameWidth, static_cast<int>(investment.getName().size()));
+        costWidth = max(costWidth, static_cast<int>(to_string(static_cast<int>(investment.getCost())).size() + 3));  // account for decimals
+        expectedReturnWidth = max(expectedReturnWidth, static_cast<int>(to_string(static_cast<int>(investment.getExpectedReturn())).size() + 3));  // account for decimals
+        riskWidth = max(riskWidth, static_cast<int>(to_string(static_cast<int>(investment.getRisk() * 100)).size() + 3));  // account for decimals
+        typeWidth = max(typeWidth, static_cast<int>(investment.getType().size()));
+
+        totalInvestments++;
+    }
 
     // Print header for the table
-    cout << "\n\n\t\t\t\t.......................All Investments........................\n";
-    cout << "\t\t" << string(102, '-') << "\n";  // Adjusted line width
-    cout << "\t\t| " << std::setw(nameWidth) << "Name" 
-         << " | " << std::setw(costWidth) << "Cost" 
-         << " | " << std::setw(expectedReturnWidth) << "Expected Return" 
-         << " | " << std::setw(riskWidth) << "Risk" 
-         << " | " << std::setw(typeWidth) << "Type" << " |\n";
-    cout << "\t\t" << string(102, '-') << "\n";  // Adjusted line width
+    cout << "\n\n\t\t\t" << string((nameWidth + costWidth + expectedReturnWidth + riskWidth + typeWidth + 2) / 2, '.') 
+     << "All Investments" 
+     << string((nameWidth + costWidth + expectedReturnWidth + riskWidth + typeWidth + 2) / 2, '.') << "\n";    cout << "\t\t\t" << string(nameWidth + costWidth + expectedReturnWidth + riskWidth + typeWidth + 16, '-') << "\n";
+    cout << "\t\t\t| " << left << setw(nameWidth) << "Name" 
+              << " | " << setw(costWidth) << "Cost" 
+              << " | " << setw(expectedReturnWidth) << "Expected Return" 
+              << " | " << setw(riskWidth) << "Risk" 
+              << " | " << setw(typeWidth) << "Type" << " |\n";
+    cout << "\t\t\t" << string(nameWidth + costWidth + expectedReturnWidth + riskWidth + typeWidth + 16, '-') << "\n";
 
     // Print investment details in a table format
     for (const auto& investment : investments) {
-        cout << "\t\t| " << std::setw(nameWidth) << investment.getName() << " | "
-             << std::fixed << std::setprecision(2) << std::setw(costWidth) << investment.getCost() << " | "
-             << std::setw(expectedReturnWidth) << investment.getExpectedReturn() << " | "
-             << std::setw(riskWidth) << investment.getRisk() << " | "
-             << std::setw(typeWidth) << investment.getType() << " |\n";
+        cout << "\t\t\t| " << left << setw(nameWidth) << investment.getName() << " | "
+                  << fixed << setprecision(2) << setw(costWidth) << investment.getCost() << " | "
+                  << setw(expectedReturnWidth) << investment.getExpectedReturn() << " | "
+                  << setw(riskWidth) << investment.getRisk() << " | "
+                  << setw(typeWidth) << investment.getType() << " |\n";
     }
-    cout << "\t\t" << string(102, '-') << "\n";
+    cout << "\t\t\t" << string(nameWidth + costWidth + expectedReturnWidth + riskWidth + typeWidth + 16, '-') << "\n";
+
+    cout << "\n\t\t\t\t" << GREEN << totalInvestments << " investment(s) available" << RESET << endl;
 }
 
 void displaySelectedInvestments(const vector<Investment>& selectedInvestments) {
     if (!selectedInvestments.empty()) {
-        // Define fixed maximum widths for the columns
-        const int nameWidth = 25;
-        const int costWidth = 10;
-        const int expectedReturnWidth = 15;
-        const int riskWidth = 6;
-        const int typeWidth = 20;
+        
+        // Calculate maximum lengths for dynamic column widths
+        int nameWidth = 4; // "Name"
+        int costWidth = 4; // "Cost"
+        int expectedReturnWidth = 15; // "Expected Return"
+        int riskWidth = 4; // "Risk"
+        int typeWidth = 4; // "Type"
+
+        int totalInvestments = 0;
+
+        for (const auto& investment : selectedInvestments) {
+            nameWidth = max(nameWidth, static_cast<int>(investment.getName().size()));
+            costWidth = max(costWidth, static_cast<int>(to_string(static_cast<int>(investment.getCost())).size() + 3));  // account for decimals
+            expectedReturnWidth = max(expectedReturnWidth, static_cast<int>(to_string(static_cast<int>(investment.getExpectedReturn())).size() + 3));  // account for decimals
+            riskWidth = max(riskWidth, static_cast<int>(to_string(static_cast<int>(investment.getRisk() * 100)).size() + 3));  // account for decimals
+            typeWidth = max(typeWidth, static_cast<int>(investment.getType().size()));
+            
+            totalInvestments++;
+        }
 
         // Print header for the table
-        cout << "\n\n\t\t\t\t.......................Selected Investments....................\n";
-        cout << "\t\t" << string(102, '-') << "\n";
-        cout << "\t\t| " << std::setw(nameWidth) << "Name" 
-             << " | " << std::setw(costWidth) << "Cost" 
-             << " | " << std::setw(expectedReturnWidth) << "Expected Return" 
-             << " | " << std::setw(riskWidth) << "Risk" 
-             << " | " << std::setw(typeWidth) << "Type" << " |\n";
-        cout << "\t\t" << string(102, '-') << "\n";  // Adjusted line width
+        cout << "\n\n\t\t\t" << string((nameWidth + costWidth + expectedReturnWidth + riskWidth + typeWidth - 4) / 2, '.') 
+        << "Selected Investments" 
+        << string((nameWidth + costWidth + expectedReturnWidth + riskWidth + typeWidth - 4) / 2, '.') << "\n";
+        cout << "\t\t\t" << string(nameWidth + costWidth + expectedReturnWidth + riskWidth + typeWidth + 16, '-') << "\n";
+        cout << "\t\t\t| " << left << setw(nameWidth) << "Name" 
+                  << " | " << setw(costWidth) << "Cost" 
+                  << " | " << setw(expectedReturnWidth) << "Expected Return" 
+                  << " | " << setw(riskWidth) << "Risk" 
+                  << " | " << setw(typeWidth) << "Type" << " |\n";
+        cout << "\t\t\t" << string(nameWidth + costWidth + expectedReturnWidth + riskWidth + typeWidth + 16, '-') << "\n";
 
         // Print selected investment details in a table format
         for (const auto& investment : selectedInvestments) {
-            cout << "\t\t| " << std::setw(nameWidth) << investment.getName() << " | "
-                 << std::fixed << std::setprecision(2) << std::setw(costWidth) << investment.getCost() << " | "
-                 << std::setw(expectedReturnWidth) << investment.getExpectedReturn() << " | "
-                 << std::setw(riskWidth) << investment.getRisk() << " | "
-                 << std::setw(typeWidth) << investment.getType() << " |\n";
+            cout << "\t\t\t| " << left << setw(nameWidth) << investment.getName() << " | "
+                      << fixed << setprecision(2) << setw(costWidth) << investment.getCost() << " | "
+                      << setw(expectedReturnWidth) << investment.getExpectedReturn() << " | "
+                      << setw(riskWidth) << investment.getRisk() << " | "
+                      << setw(typeWidth) << investment.getType() << " |\n";
         }
-        cout << "\t\t" << string(102, '-') << "\n";  // Adjusted line width
+        cout << "\t\t\t" << string(nameWidth + costWidth + expectedReturnWidth + riskWidth + typeWidth + 16, '-') << "\n";
+        cout << "\n\t\t\t\t" << GREEN << totalInvestments << " investment(s) selected" << RESET << endl;
     } else {
         cout << "\t\t\t\t" << RED << "No suitable investments found within the budget." << RESET << endl;
     }

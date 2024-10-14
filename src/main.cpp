@@ -3,6 +3,7 @@
 #include "../include/input.h"
 #include "../include/output.h"
 #include "../include/dataTypes.h"
+#include <limits>
 
 using namespace std;
 
@@ -37,7 +38,15 @@ int main() {
         cout << "\t\t\t\t" << YELLOW << "5. EXIT" << RESET << "\n";
         cout << "\n\t\t\t\t" << BLUE << "Enter your choice (1-5): " << RESET;
 
-        cin >> choice;
+        // Input validation
+        while (!(cin >> choice) || choice < 1 || choice > 5) {
+            // Clear the error flag set by invalid input
+            cin.clear();
+            // Ignore invalid input
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "\n\t\t\t\t" << RED << "Invalid choice. Please enter a valid number between 1 and 5: " << RESET;
+        }
+        
         cout << endl;
 
         switch (choice) {

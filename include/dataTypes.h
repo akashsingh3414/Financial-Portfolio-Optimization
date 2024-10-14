@@ -16,7 +16,6 @@ public:
     double getRisk() const;
     string getType() const;
     string getName() const;
-    void display() const;
 
 private:
     string name;
@@ -32,8 +31,7 @@ public:
 
     double getBudget() const;
     int getRiskTolerance() const;
-    void display() const;
-
+    
 private:
     double budget;
     int riskTolerance;

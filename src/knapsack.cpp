@@ -9,6 +9,7 @@ using namespace std;
 // ANSI color codes for better visuals
 const string GREEN = "\033[32m"; // Green text
 const string RESET = "\033[0m";  // Reset color
+const string RED = "\033[31m";         // Red text
 
 Knapsack::Knapsack() {}
 
@@ -49,12 +50,12 @@ vector<Investment> Knapsack::optimizeByKnapsack(const vector<Investment>& invest
     // Optional: if totalReturn is negative, you can handle it here
     // For example, you might want to print a warning
     if (totalReturn < 0) {
-        cout << "\n\t\t\t\tWarning: Total return is negative (" << GREEN << totalReturn << RESET 
+        cout << "\n\t\t\tWarning: Total return is negative (" << GREEN << totalReturn << RESET 
              << "). Consider reviewing your investment choices.\n";
     } else {
-        cout << "\n\t\t\t\tMax Return using Knapsack & Greedy Algorithm could be " 
+        cout << "\n\t\t\tMax Return using Knapsack & Greedy Algorithm could be " 
              << GREEN << totalReturn << RESET << " (with a budget of " 
-             << GREEN << budget << RESET << ")\n";  // Max return and budget in green color
+             << RED << budget << RESET << ")\n";  // Max return and budget in green color
     }
 
     return selectedInvestments;

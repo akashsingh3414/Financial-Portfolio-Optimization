@@ -67,9 +67,9 @@ vector<Investment> dynamicProgramming::maximizeReturns(const vector<Investment>&
         result.push_back(filteredInvestments[idx]);
     }
 
-    cout << "\n\t\t\t\tMax Return using Dynamic Programming could be " 
-         << RED << dp[budget] << RESET << " (with a budget of " 
-         << GREEN << constraints.getBudget()  << RESET << ")\n";  // Max return and budget in green color
+    cout << "\n\t\t\tMax Return using Dynamic Programming could be " 
+         << GREEN << dp[budget] << RESET << " (with a budget of " 
+         << RED << constraints.getBudget()  << RESET << ")\n";  // Max return and budget in green color
 
     return result;
 }

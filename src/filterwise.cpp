@@ -11,6 +11,7 @@ using namespace std;
 // ANSI color codes for better visuals
 const string GREEN = "\033[32m"; // Green text
 const string RESET = "\033[0m";  // Reset color
+const string RED = "\033[31m";         // Red text
 
 Greedy::Greedy() {}
 
@@ -37,12 +38,12 @@ vector<Investment> selectInvestments(const vector<Investment>& sortedInvestments
 
     // Outputting the total return and budget
     if (totalReturn < 0) {
-        cout << "\n\t\t\t\tWarning: Total return is negative (" 
+        cout << "\n\t\t\tWarning: Total return is negative (" 
              << GREEN << totalReturn << RESET << "). Consider reviewing your investment choices.\n";
     } else {
-        cout << "\n\t\t\t\tMax Return using current filter could be " 
+        cout << "\n\t\t\tMax Return using current filter could be " 
              << GREEN << totalReturn << RESET << " (with a budget of " 
-             << GREEN << budget << RESET << ")\n";
+             << RED << budget << RESET << ")\n";
     }
 
     return selectedInvestments;

@@ -6,6 +6,7 @@
 #include "../include/knapsack.h"
 #include "../include/utils.h"
 #include "../include/dp.h"
+#include <limits>
 
 using namespace std;
 
@@ -34,8 +35,14 @@ void variousFilterMenu(const Constraints& constraints) {
         cout << "\t\t\t\t" << YELLOW << "2. Low Cost" << RESET << endl;
         cout << "\t\t\t\t" << YELLOW << "3. Low Risk" << RESET << endl;
         cout << "\t\t\t\t" << YELLOW << "4. Go Back to PREVIOUS MENU" << RESET << endl;
-        cout << "\n\t\t\t\tEnter your choice (1-4): ";
-        cin >> choice;
+        cout << "\n\t\t\t\t" << BLUE << "Enter your choice (1-4): " << RESET;
+
+        // Input validation
+        while (!(cin >> choice) || choice < 1 || choice > 4) {
+            cin.clear();  // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Discard invalid input
+            cout << "\n\t\t\t\t" << RED << "Invalid choice. Please enter a number between 1 and 4: " << RESET;
+        }
 
         switch (choice) {
             case 1:
@@ -55,9 +62,6 @@ void variousFilterMenu(const Constraints& constraints) {
                 break;
             case 4:
                 cout << "\n\t\t\t\t" << RED << "Exiting current menu" << RESET << "\n";
-                break;
-            default:
-                cout << "\n\t\t\t\t" << RED << "Invalid choice. Please enter a number between 1 and 4." << RESET << "\n";
                 break;
         }
 
@@ -81,33 +85,34 @@ void getSuggestionsMenu(const Constraints& constraints) {
         cout << "\t\t\t\t" << YELLOW << "4. Go Back to MAIN MENU" << RESET << endl;
 
         cout << "\n\t\t\t\t" << BLUE << "Enter your choice (1-4): " << RESET;
-        cin >> choice;
+
+        // Input validation
+        while (!(cin >> choice) || choice < 1 || choice > 4) {
+            cin.clear();  // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Discard invalid input
+            cout << "\n\t\t\t\t" << RED << "Invalid choice. Please enter a number between 1 and 4: " << RESET;
+        }
 
         switch (choice) {
-            case 1:
-                {
-                    Knapsack knapsack;
-                    vector<Investment> optimizedInvestments = knapsack.optimizeByKnapsack(investments, constraints.getBudget(), constraints.getRiskTolerance());
-                    cout << "\n\t\t\t\tShowing Results for High Return to Cost Ratio within budget\n";
-                    displaySelectedInvestments(optimizedInvestments);
-                }
+            case 1: {
+                Knapsack knapsack;
+                vector<Investment> optimizedInvestments = knapsack.optimizeByKnapsack(investments, constraints.getBudget(), constraints.getRiskTolerance());
+                cout << "\n\t\t\t\tShowing Results for High Return to Cost Ratio within budget\n";
+                displaySelectedInvestments(optimizedInvestments);
                 break;
-            case 2:
-                {
-                    dynamicProgramming dynamicProgramming;
-                    vector<Investment> optimizedInvestments = dynamicProgramming.maximizeReturns(investments, constraints);
-                    cout << "\n\t\t\t\tShowing Optimized result for max returns within budget\n";
-                    displaySelectedInvestments(optimizedInvestments);
-                }
+            }
+            case 2: {
+                dynamicProgramming dynamicProgramming;
+                vector<Investment> optimizedInvestments = dynamicProgramming.maximizeReturns(investments, constraints);
+                cout << "\n\t\t\t\tShowing Optimized result for max returns within budget\n";
+                displaySelectedInvestments(optimizedInvestments);
                 break;
+            }
             case 3:
                 variousFilterMenu(constraints);
                 break;
             case 4:
                 cout << "\n\t\t\t\t" << RED << "Exiting the suggestions menu." << RESET << "\n";
-                break;
-            default:
-                cout << "\t\t\t\t" << RED << "Invalid choice. Please enter a number between 1 and 4." << RESET << "\n";
                 break;
         }
         cout << endl;
