@@ -62,7 +62,7 @@ Constraints getUserConstraints() {
             cout << "\t\t\t\t" << RED << "Invalid input. Please enter a positive number for the budget." << RESET << "\n";
         } else {
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer
-            break; // Valid input, exit the loop
+            break;
         }
     }
 
@@ -78,7 +78,7 @@ Constraints getUserConstraints() {
             cout << "\t\t\t\t" << RED << "Invalid input. Please enter 1, 2, or 3 for risk tolerance." << RESET << "\n";
         } else {
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer
-            break; // Valid input, exit the loop
+            break;
         }
     }
 

@@ -88,7 +88,9 @@ void plotInvestmentCostAndReturn(const vector<Investment>& investments) {
     string command = "gnuplot " + scriptFilename;
     system(command.c_str());
 
-    system("start data/imageInvestmentCostAndReturn.png");
+    system("start data/imageInvestmentCostAndReturn.png"); //for windows
+    // system("xdg-open data/imageInvestmentCostAndReturn.png"); //for linux
+
 
     cout << "\n\t\t\t\tPlot generated and saved as 'data/imageInvestmentCostAndReturn.png'.\n";
 }

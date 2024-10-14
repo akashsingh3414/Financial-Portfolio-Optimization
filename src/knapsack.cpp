@@ -47,8 +47,7 @@ vector<Investment> Knapsack::optimizeByKnapsack(const vector<Investment>& invest
         }
     }
 
-    // Optional: if totalReturn is negative, you can handle it here
-    // For example, you might want to print a warning
+    // Optional: if totalReturn is negative, print warning
     if (totalReturn < 0) {
         cout << "\n\t\t\tWarning: Total return is negative (" << GREEN << totalReturn << RESET 
              << "). Consider reviewing your investment choices.\n";

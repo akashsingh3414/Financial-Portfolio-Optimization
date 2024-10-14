@@ -23,7 +23,8 @@ Constraints inputMenu() {
 
 int main() {
     int choice;
-    string filename = "data\\investments.csv";
+    string filename = "data\\investments.csv"; //for windows
+    //string filename = "data/investments.csv";  //for linux
 
     do {
         cout << "\n";

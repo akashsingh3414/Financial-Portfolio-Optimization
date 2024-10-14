@@ -21,7 +21,8 @@ const string RESET = "\033[0m";       // Reset color
 
 void variousFilterMenu(const Constraints& constraints) {
     int choice;
-    string filename = "data\\investments.csv";    
+    string filename = "data\\investments.csv"; //for windows
+    //string filename = "data/investments.csv";  //for linux
     vector<Investment> investments = readInvestmentData(filename);
     Greedy Greedy;
     vector<Investment> optimizedInvestments;
@@ -71,7 +72,8 @@ void variousFilterMenu(const Constraints& constraints) {
 
 void getSuggestionsMenu(const Constraints& constraints) {
     int choice;
-    string filename = "data\\investments.csv";    
+    string filename = "data\\investments.csv"; //for windows
+    //string filename = "data/investments.csv";  //for linux    
     vector<Investment> investments = readInvestmentData(filename);
 
     do {

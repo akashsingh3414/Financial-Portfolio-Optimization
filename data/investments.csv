@@ -62,6 +62,8 @@ GlobalREIT UU,500,80,0.30,Real Estate
 WaterResources VV,120,14,0.12,Utilities
 NanoTech WW,180,22,0.19,Technology
 HealthFund XX,200,17,0.08,Healthcare
+
+
 SolarPower A,150.50,-30,0.05,Energy
 QuantumTech B,250.75,50,0.02,Technology
 EcoFriendly C,100,10,0.01,Environmental
@@ -163,3 +165,4 @@ NextGenBatteries CU,220.90,30,0.15,Energy
 UrbanMobility CV,200.00,20,0.09,Transportation
 Aquaculture CW,175.00,12,0.06,Agriculture
 ABC,100,-9,0.7,ABC
+ABC,90,8,0.4,ABC

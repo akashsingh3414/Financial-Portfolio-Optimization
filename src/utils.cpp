@@ -14,10 +14,10 @@ const string RED = "\033[31m";        // Red text
 const string RESET = "\033[0m";       // Reset color
 const string GREEN = "\033[32m";       // Green text
 
-double getPositiveDouble(const string& prompt) {
+double getPositiveDouble() {
     double value;
     while (true) {
-        cout << "\t\t\t\t" << prompt;
+        cout << "\t\t\t\t" << "Enter investment cost: ";
         cin >> value;
 
         // Check if input is valid
@@ -27,15 +27,15 @@ double getPositiveDouble(const string& prompt) {
             cout << RED << "\t\t\t\tInvalid input. Please enter a positive number." << RESET << endl;
         } else {
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer
-            return value; // Return valid input
+            return value;
         }
     }
 }
 
-double getAnyDouble(const string& prompt) {
+double getAnyDouble() {
     double value;
     while (true) {
-        cout << "\t\t\t\t" << prompt;
+        cout << "\t\t\t\t" << "Enter expected return (can be negative): ";
         cin >> value;
 
         // Check if input is valid
@@ -45,7 +45,7 @@ double getAnyDouble(const string& prompt) {
             cout << RED << "\t\t\t\tInvalid input. Please enter a valid number." << RESET << endl;
         } else {
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer
-            return value; // Return valid input
+            return value;
         }
     }
 }
@@ -63,7 +63,7 @@ double getRisk() {
             cout << RED << "\t\t\t\tInvalid input. Please enter a risk value between 0 and 1." << RESET << endl;
         } else {
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer
-            return risk; // Return valid input
+            return risk;
         }
     }
 }
@@ -90,9 +90,9 @@ void insertDataIntoCSV(const string& filename) {
     cout << "\t\t\t\tEnter investment name: ";
     getline(cin, name);
 
-    cost = getPositiveDouble("Enter investment cost: ");
-    expectedReturn = getAnyDouble("Enter expected return (can be negative): ");
-    risk = getRisk(); // Use the new function to get risk
+    cost = getPositiveDouble();
+    expectedReturn = getAnyDouble();
+    risk = getRisk();
 
     cout << "\t\t\t\tEnter investment type: ";
     getline(cin, type);
@@ -115,6 +115,15 @@ vector<Investment> readInvestmentData(const string& filename) {
     }
 
     while (getline(file, line)) {
+        // Trim leading and trailing whitespace
+        line.erase(0, line.find_first_not_of(" \t\n\r\f\v")); // trim left
+        line.erase(line.find_last_not_of(" \t\n\r\f\v") + 1); // trim right
+
+        // Skip blank lines
+        if (line.empty()) {
+            continue;
+        }
+
         size_t pos = 0;
         string token;
         vector<string> tokens;
@@ -149,7 +158,7 @@ vector<Investment> readInvestmentData(const string& filename) {
 }
 
 void displayAllInvestments(const string& filename) {
-    vector<Investment> investments = readInvestmentData(filename);  // Assuming you have this function
+    vector<Investment> investments = readInvestmentData(filename);
 
     if (investments.empty()) {
         cout << "\t\t\t\t" << RED << "No investments found in the file." << RESET << endl;
