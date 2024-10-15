@@ -12,7 +12,7 @@ using namespace std;
 
 const string RED = "\033[31m";        // Red text
 const string RESET = "\033[0m";       // Reset color
-const string GREEN = "\033[32m";       // Green text
+const string GREEN = "\033[32m";      // Green text
 
 double getPositiveDouble() {
     double value;

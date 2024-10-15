@@ -11,7 +11,7 @@ using namespace std;
 // ANSI color codes for better visuals
 const string GREEN = "\033[32m"; // Green text
 const string RESET = "\033[0m";  // Reset color
-const string RED = "\033[31m";         // Red text
+const string RED = "\033[31m";   // Red text
 
 Greedy::Greedy() {}
 

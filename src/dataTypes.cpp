@@ -1,6 +1,8 @@
 #include "../include/dataTypes.h"
 #include <limits>
 
+using namespace std;
+
 // ANSI color codes for better visuals
 const string RED = "\033[31m";        // Red text
 const string GREEN = "\033[32m";      // Green text

@@ -7,7 +7,7 @@
 using namespace std;
 
 // ANSI color codes for better visuals
-const string RED = "\033[31m";         // Red text
+const string RED = "\033[31m";   // Red text
 const string GREEN = "\033[32m"; // Green text
 const string RESET = "\033[0m";  // Reset color
 
@@ -15,14 +15,10 @@ dynamicProgramming::dynamicProgramming() {}
 
 dynamicProgramming::~dynamicProgramming() {}
 
-vector<Investment> dynamicProgramming::maximizeReturns(const vector<Investment>& investments, const Constraints& constraints) {
-    char considerRisk;
-    cout << "\n\t\t\t\tDo you want to consider the risk factor? (Y/N): ";
-    cin >> considerRisk;
-
+vector<Investment> dynamicProgramming::maximizeReturns(const vector<Investment>& investments, double givenBudget, int givenRiskTolerance, char considerRisk) {
     int n = investments.size();
-    int budget = constraints.getBudget();
-    double riskTolerance = constraints.getRiskTolerance();
+    int budget = givenBudget;
+    double riskTolerance = givenRiskTolerance;
 
     vector<Investment> filteredInvestments;
 
@@ -69,7 +65,7 @@ vector<Investment> dynamicProgramming::maximizeReturns(const vector<Investment>&
 
     cout << "\n\t\t\tMax Return using Dynamic Programming could be " 
          << GREEN << dp[budget] << RESET << " (with a budget of " 
-         << RED << constraints.getBudget()  << RESET << ")\n";  // Max return and budget in green color
+         << RED << givenBudget  << RESET << ")\n";  // Max return and budget in green color
 
     return result;
 }
