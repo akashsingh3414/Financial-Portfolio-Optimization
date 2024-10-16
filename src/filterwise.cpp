@@ -13,9 +13,9 @@ const string GREEN = "\033[32m"; // Green text
 const string RESET = "\033[0m";  // Reset color
 const string RED = "\033[31m";   // Red text
 
-Greedy::Greedy() {}
+filter::filter() {}
 
-Greedy::~Greedy() {}
+filter::~filter() {}
 
 string toLowercase(const string& str) {
     string lowerStr = str;
@@ -49,7 +49,7 @@ vector<Investment> selectInvestments(const vector<Investment>& sortedInvestments
     return selectedInvestments;
 }
 
-vector<Investment> Greedy::sortByHighReturn(const vector<Investment>& investments, double budget) {
+vector<Investment> filter::sortByHighReturn(const vector<Investment>& investments, double budget) {
     vector<Investment> filteredInvestments = investments;
 
     // Sort by expected return in descending order
@@ -60,7 +60,7 @@ vector<Investment> Greedy::sortByHighReturn(const vector<Investment>& investment
     return selectInvestments(filteredInvestments, budget);
 }
 
-vector<Investment> Greedy::sortByLowCost(const vector<Investment>& investments, double budget) {
+vector<Investment> filter::sortByLowCost(const vector<Investment>& investments, double budget) {
     vector<Investment> filteredInvestments = investments;
 
     // Sort by cost in ascending order
@@ -71,7 +71,7 @@ vector<Investment> Greedy::sortByLowCost(const vector<Investment>& investments, 
     return selectInvestments(filteredInvestments, budget);
 }
 
-vector<Investment> Greedy::sortByLowRisk(const vector<Investment>& investments, double budget) {
+vector<Investment> filter::sortByLowRisk(const vector<Investment>& investments, double budget) {
     vector<Investment> filteredInvestments = investments;
 
     // Sort by risk in ascending order

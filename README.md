@@ -19,9 +19,9 @@ This project provides an optimized solution for financial portfolio selection us
 
 ## Features
 
-1. **Knapsack and Greedy Algorithm (High Return-to-Cost Ratio)**:
+1. **Knapsack with Greedy Approach (High Return-to-Cost Ratio)**:
    - Uses the knapsack algorithm to select an optimized set of investments based on the highest return-to-cost ratio.
-   - The greedy algorithm also runs to offer a comparative set.
+   - The greedy approch also runs to offer a comparative set.
    - Both algorithms respect the input constraints of budget and risk type.
 
 2. **Dynamic Programming for Maximum Return**:

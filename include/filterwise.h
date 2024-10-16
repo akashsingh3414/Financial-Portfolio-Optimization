@@ -4,10 +4,10 @@
 #include "dataTypes.h"
 #include <vector>
 
-class Greedy {
+class filter {
 public:
-    Greedy();
-    ~Greedy();
+    filter();
+    ~filter();
     
     std::vector<Investment> sortByHighReturn(const std::vector<Investment>& investments, double budget);
     std::vector<Investment> sortByLowCost(const std::vector<Investment>& investments, double budget);

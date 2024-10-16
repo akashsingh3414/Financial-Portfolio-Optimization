@@ -26,7 +26,7 @@ void variousFilterMenu(const Constraints& constraints) {
     string filename = "data\\investments.csv"; //for windows
     //string filename = "data/investments.csv";  //for linux
     vector<Investment> investments = readInvestmentData(filename);
-    Greedy Greedy;
+    filter filter;
     vector<Investment> optimizedInvestments;
 
     do {
@@ -49,17 +49,17 @@ void variousFilterMenu(const Constraints& constraints) {
 
         switch (choice) {
             case 1:
-                optimizedInvestments = Greedy.sortByHighReturn(investments, constraints.getBudget());
+                optimizedInvestments = filter.sortByHighReturn(investments, constraints.getBudget());
                 cout << "\n\t\t\t\tShowing Results for High Return Investments\n";
                 displaySelectedInvestments(optimizedInvestments);
                 break;
             case 2:
-                optimizedInvestments = Greedy.sortByLowCost(investments, constraints.getBudget());
+                optimizedInvestments = filter.sortByLowCost(investments, constraints.getBudget());
                 cout << "\n\t\t\t\tShowing Results for Low Cost Investments\n";
                 displaySelectedInvestments(optimizedInvestments);
                 break;
             case 3:
-                optimizedInvestments = Greedy.sortByLowRisk(investments, constraints.getBudget());
+                optimizedInvestments = filter.sortByLowRisk(investments, constraints.getBudget());
                 cout << "\n\t\t\t\tShowing Results for Low Risk Investments\n";
                 displaySelectedInvestments(optimizedInvestments);
                 break;

@@ -52,7 +52,7 @@ vector<Investment> Knapsack::optimizeByKnapsack(const vector<Investment>& invest
         cout << "\n\t\t\tWarning: Total return is negative (" << GREEN << totalReturn << RESET 
              << "). Consider reviewing your investment choices.\n";
     } else {
-        cout << "\n\t\t\tMax Return using Knapsack & Greedy Algorithm could be " 
+        cout << "\n\t\t\tMax Return using Knapsack with Greedy approch could be " 
              << GREEN << totalReturn << RESET << " (with a budget of " 
              << RED << budget << RESET << ")\n";  // Max return and budget in green color
     }
